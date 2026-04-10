@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="ImpulseDiceResource" format=3 uid="uid://c6yqt6ybt14rg"]
+
+[ext_resource type="Script" uid="uid://cam0ibgelbbxd" path="res://entities/casino/dice/impulse/impulse_dice_resource.gd" id="1_w1gsc"]
+
+[resource]
+script = ExtResource("1_w1gsc")
+faces = [0, 0, 0, 0, 0, 0]
+current_face = null
+metadata/_custom_type_script = "uid://cam0ibgelbbxd"

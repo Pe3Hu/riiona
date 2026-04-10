@@ -7,3 +7,11 @@ res://global/Catalog.gd
 res://entities/casino/dice/dice_resource.gd
 res://entities/casino/dice/stance_dice_resource.gd
 res://entities/unit/guise/guise_resource.gd
+res://entities/casino/dice/impulse_dice_resource.gd
+res://entities/casino/dice/impulse/fast_1.tres
+res://entities/casino/dice/impulse/empty.tres
+res://entities/casino/dice/impulse/heavy_1.tres
+res://entities/casino/dice/impulse/normal_1.tres
+res://entities/casino/casino_resource.gd
+res://global/Casino.gd
+res://global/Judge.gd

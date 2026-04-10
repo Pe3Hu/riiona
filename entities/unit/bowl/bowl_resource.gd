@@ -13,3 +13,12 @@ extends Resource
 func _init(unit_: UnitResource, type_: State.Bowl) -> void:
 	unit = unit_
 	type = type_
+
+
+func change_value(value_: int) -> void:
+	current_value += value_
+	
+	if value_ > 0:
+		current_value = min(current_value, max_value)
+	else:
+		current_value = max(current_value, min_value)

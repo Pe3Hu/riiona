@@ -14,7 +14,7 @@ compatibility/default_parent_skeleton_in_mesh_instance_3d=true
 
 [application]
 
-config/name="template"
+config/name="riiona"
 run/main_scene="uid://dv1mc17yeqcbq"
 config/features=PackedStringArray("4.6", "Forward Plus")
 config/icon="res://assets/icon.svg"
@@ -23,11 +23,20 @@ config/icon="res://assets/icon.svg"
 
 Catalog="*res://global/Catalog.gd"
 State="*res://global/State.gd"
+Casino="*uid://coe05j8kut0rb"
+Judge="*uid://c0ppoijjrlay"
 
 [display]
 
 window/size/viewport_width=1920
 window/size/viewport_height=1080
+
+[file_customization]
+
+folder_colors={
+"res://entities/casino/": "yellow",
+"res://entities/unit/": "red"
+}
 
 [gui]
 
