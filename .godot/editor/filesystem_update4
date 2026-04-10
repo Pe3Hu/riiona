@@ -1,0 +1,9 @@
+res://entities/world/world.tscn
+res://entities/unit/unit_resource.gd
+res://entities/unit/bowl/bowl_resource.gd
+res://global/State.gd
+res://entities/unit/stance/stance_resource.gd
+res://global/Catalog.gd
+res://entities/casino/dice/dice_resource.gd
+res://entities/casino/dice/stance_dice_resource.gd
+res://entities/unit/guise/guise_resource.gd

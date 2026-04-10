@@ -1,0 +1,17 @@
+63f7b34db8d8cdea90c76aacccf841ec
+::res://::1775837495
+::res://assets/::1775837216
+icon.svg::CompressedTexture2D::5994948088208690775::1765022965::1765023059::1::::<><><>0<>0<>02eacd1de94d8cd03fff6a9e79b797e2<>res://.godot/imported/icon.svg-56083ea2a1f1a4f1e49773bdc6d7826c.ctex::
+::res://assets/fonts/::1775837217
+Chicoree.ttf::FontFile::5723013446080520679::1764223938::1765023530::1::::<><><>0<>0<>5f276ba2e71e0c2b0be5f7f5d0b78875<>res://.godot/imported/Chicoree.ttf-c0580ac49be2a855522d0757fc0290f6.fontdata::
+dpcomic.ttf::FontFile::7791285638537847960::1075792158::1765023465::1::::<><><>0<>0<>a6e926a9aa27f897976b3bd940fc4c0f<>res://.godot/imported/dpcomic.ttf-5547016ab0523683fcce5c60dc9302f7.fontdata::
+geometria_medium.otf::FontFile::2004850369633487270::1632889758::1770999477::1::::<><><>0<>0<>d37bc881b6f61bf5a5a7162080c9f27b<>res://.godot/imported/geometria_medium.otf-41cf6e53f41f774b33ed46a0b889d28f.fontdata::
+Inter.otf::FontFile::1589023350328996289::1627516836::1770999477::1::::<><><>0<>0<>bbbcb61b7fd55c9ff0dc9f2e503cbd4e<>res://.godot/imported/Inter.otf-f936cb0872c9a151322132cf17004ffd.fontdata::
+meslo.ttf::FontFile::2948952988611021511::1492497582::1770999477::1::::<><><>0<>0<>3af8f6d7f02eb8f4978fdfdd9fa6a172<>res://.godot/imported/meslo.ttf-0a1acd7c79b3aacda41bf1c665c9e236.fontdata::
+::res://entities/::1775837217
+::res://entities/world/::1775837217
+world.gd::GDScript::1186082734165819011::1765023357::0::1::::World<>Node<><>0<>0<><>::
+world.tscn::PackedScene::8687635180721816570::1770999198::0::1::::<><><>0<>0<><>::uid://q5suynu18b52::::res://entities/world/world.gd
+::res://global/::1775837217
+Catalog.gd::GDScript::3495370124140258623::1770999196::0::1::::<>Node<><>0<>0<><>::
+State.gd::GDScript::7266829781729311716::1770999198::0::1::::<>Node<><>0<>0<><>::
