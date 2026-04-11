@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://drmci0psy2r5"]
+
+[ext_resource type="Script" uid="uid://cpsbdvcp0uiff" path="res://entities/legion/camp/camp.gd" id="1_qwl07"]
+
+[node name="Camp" type="Node2D" unique_id=881419817]
+script = ExtResource("1_qwl07")

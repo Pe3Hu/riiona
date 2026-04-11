@@ -1,6 +1,7 @@
 extends Node
 
 
+var is_dragging: bool = false
 
 const D6_SIZE = 6
 

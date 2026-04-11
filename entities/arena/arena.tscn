@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://cyqqcbeog7v2f"]
+
+[ext_resource type="Script" uid="uid://bn15mstt4w14k" path="res://entities/arena/arena.gd" id="1_32pqm"]
+[ext_resource type="PackedScene" uid="uid://bokpvabrx64nt" path="res://entities/arena/battlefield/battlefield.tscn" id="2_va7q5"]
+
+[node name="Arena" type="Node2D" unique_id=1946705325]
+script = ExtResource("1_32pqm")
+
+[node name="Battlefield" parent="." unique_id=1825559430 instance=ExtResource("2_va7q5")]

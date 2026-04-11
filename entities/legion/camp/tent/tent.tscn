@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://cb5prxr0cwbfn"]
+
+[ext_resource type="Script" uid="uid://dbrqwibe82iil" path="res://entities/legion/camp/tent/tent.gd" id="1_h6exp"]
+[ext_resource type="Texture2D" uid="uid://0qk7apa36yfb" path="res://entities/legion/camp/tent/images/elite_tent.png" id="2_br1ty"]
+
+[node name="Tent" type="Node2D" unique_id=1526950185]
+script = ExtResource("1_h6exp")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=551576610]
+scale = Vector2(2, 2)
+texture = ExtResource("2_br1ty")

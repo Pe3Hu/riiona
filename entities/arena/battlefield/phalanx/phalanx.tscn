@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://03ykgquheo2o"]
+
+[ext_resource type="Script" uid="uid://bgusbykkjk2r7" path="res://entities/arena/battlefield/phalanx/phalanx.gd" id="1_udjxr"]
+[ext_resource type="PackedScene" uid="uid://bffg6vr3depwq" path="res://entities/arena/battlefield/spot/spot.tscn" id="2_bk0f5"]
+
+[node name="Phalanx" type="Node2D" unique_id=1605160790]
+script = ExtResource("1_udjxr")
+
+[node name="Spot1" parent="." unique_id=1844195097 instance=ExtResource("2_bk0f5")]
+position = Vector2(0, -144)
+
+[node name="Spot2" parent="." unique_id=1530658633 instance=ExtResource("2_bk0f5")]
+position = Vector2(0, -72)
+
+[node name="Spot3" parent="." unique_id=2145291315 instance=ExtResource("2_bk0f5")]
+
+[node name="Spot4" parent="." unique_id=1370108424 instance=ExtResource("2_bk0f5")]
+position = Vector2(0, 72)
+
+[node name="Spot5" parent="." unique_id=599880129 instance=ExtResource("2_bk0f5")]
+position = Vector2(0, 144)
