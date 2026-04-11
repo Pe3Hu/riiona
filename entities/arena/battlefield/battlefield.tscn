@@ -1,9 +1,7 @@
 [gd_scene format=3 uid="uid://bokpvabrx64nt"]
 
 [ext_resource type="Script" uid="uid://cin2yfu3yqj57" path="res://entities/arena/battlefield/battlefield.gd" id="1_vigat"]
-[ext_resource type="PackedScene" uid="uid://b3lborblpvleg" path="res://entities/unit/unit.tscn" id="3_qr7gu"]
-[ext_resource type="PackedScene" uid="uid://cb5prxr0cwbfn" path="res://entities/legion/camp/tent/tent.tscn" id="4_3i2g4"]
-[ext_resource type="PackedScene" uid="uid://03ykgquheo2o" path="res://entities/arena/battlefield/phalanx/phalanx.tscn" id="4_qw0f0"]
+[ext_resource type="PackedScene" uid="uid://drmci0psy2r5" path="res://entities/legion/camp/camp.tscn" id="2_sbs5h"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_qr7gu"]
 vertices = PackedVector2Array(789.6406, 529.3281, -962.02344, 581.65625, -872.75, -409.14063, 640.3828, -611.75)
@@ -13,46 +11,11 @@ outlines = Array[PackedVector2Array]([PackedVector2Array(-996, -595, 900, -623, 
 [node name="Battlefield" type="Node2D" unique_id=1825559430]
 script = ExtResource("1_vigat")
 
+[node name="Camp" parent="." unique_id=881419817 node_paths=PackedStringArray("battlefield") instance=ExtResource("2_sbs5h")]
+battlefield = NodePath("..")
+
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="." unique_id=1810052088]
 navigation_polygon = SubResource("NavigationPolygon_qr7gu")
 
-[node name="Unit" parent="." unique_id=324963147 instance=ExtResource("3_qr7gu")]
-unique_name_in_owner = true
-position = Vector2(-332, -31)
-speed = 100.0
-
-[node name="Spots" type="Node2D" parent="." unique_id=1093726871]
-unique_name_in_owner = true
-
-[node name="LeftSide" type="Node2D" parent="." unique_id=8767746]
-
-[node name="LeftPawnTent" parent="LeftSide" unique_id=1526950185 instance=ExtResource("4_3i2g4")]
-unique_name_in_owner = true
-position = Vector2(-136, -248)
-
-[node name="LeftEliteTent" parent="LeftSide" unique_id=390058304 instance=ExtResource("4_3i2g4")]
-unique_name_in_owner = true
-position = Vector2(-264, -248)
-
-[node name="LeftPhalanxs" type="Node2D" parent="LeftSide" unique_id=1936009380]
-unique_name_in_owner = true
-position = Vector2(-40, 0)
-
-[node name="LeftPhalanx1" parent="LeftSide/LeftPhalanxs" unique_id=1605160790 instance=ExtResource("4_qw0f0")]
-unique_name_in_owner = true
-
-[node name="RightSide" type="Node2D" parent="." unique_id=1026714705]
-
-[node name="RightPawnTent" parent="RightSide" unique_id=463265120 instance=ExtResource("4_3i2g4")]
-unique_name_in_owner = true
-position = Vector2(136, -248)
-
-[node name="RightEliteTent" parent="RightSide" unique_id=79516652 instance=ExtResource("4_3i2g4")]
-unique_name_in_owner = true
-position = Vector2(264, -248)
-
-[node name="RightPhalanxs" type="Node2D" parent="RightSide" unique_id=651448367]
-position = Vector2(40, 0)
-
-[node name="RightPhalanx1" parent="RightSide/RightPhalanxs" unique_id=1653290107 instance=ExtResource("4_qw0f0")]
+[node name="Units" type="Node2D" parent="." unique_id=1093726871]
 unique_name_in_owner = true

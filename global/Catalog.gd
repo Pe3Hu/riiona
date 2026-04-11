@@ -2,6 +2,28 @@ extends Node
 
 
 var is_dragging: bool = false
+var next_spot: Spot:
+	set(value_):
+		if value_ == null and next_spot != null:
+			if next_spot.unit != null:
+				next_spot.unit.set_collision_layer_value(2, true)
+		
+		next_spot = value_
+		
+		if next_spot != null:
+			if next_spot.unit != null:
+				next_spot.unit.set_collision_layer_value(2, false)
+var previous_spot: Spot:
+	set(value_):
+		if value_ == null and previous_spot != null:
+				if previous_spot.unit != null:
+					previous_spot.unit.set_collision_layer_value(2, true)
+		
+		previous_spot = value_
+		
+		if previous_spot != null:
+			if previous_spot.unit != null:
+				previous_spot.unit.set_collision_layer_value(2, false)
 
 const D6_SIZE = 6
 
@@ -64,3 +86,19 @@ const combo_to_string = {
 	State.PokerCombo.STRAIGHT: "straight"
 }
 #endregion
+
+
+const unit_to_string = {
+	State.Unit.PAWN: "pawn",
+	State.Unit.ELITE: "elite"
+}
+
+const side_to_string = {
+	State.Side.LEFT: "left",
+	State.Side.RIGHT: "right"
+}
+
+const phalanx_to_offset = {
+	State.Phalanx.TIGHT: Vector2(0, -128),
+	State.Phalanx.GAP: Vector2(0, -128),
+}

@@ -18,6 +18,11 @@ enum Unit{
 	PAWN,
 	ELITE
 }
+
+enum Side{
+	LEFT,
+	RIGHT
+}
 #endregion
 
 enum Fuel {
@@ -56,4 +61,9 @@ enum PokerCombo{
 	DOUBLE_DOUBLE = 10,
 	DOUBLE_TRIPLET = 11,
 	STRAIGHT = 20
+}
+
+enum Phalanx{
+	TIGHT,
+	GAP
 }

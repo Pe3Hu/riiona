@@ -1,16 +1,18 @@
+@tool
 class_name Battlefield
 extends Node2D
 
 
-@onready var unit = %Unit
+@onready var units = %Units
+
 
 
 func _ready() -> void:
 	pass
 
 
-func move_unit(target: Vector2) -> void:
-	unit.move_to(target)
+#func move_unit(target: Vector2) -> void:
+	#unit.move_to(target)
 
 
 #func _process(_delta: float) -> void:

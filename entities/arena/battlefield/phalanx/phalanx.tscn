@@ -5,17 +5,22 @@
 
 [node name="Phalanx" type="Node2D" unique_id=1605160790]
 script = ExtResource("1_udjxr")
+type = 1
 
-[node name="Spot1" parent="." unique_id=1844195097 instance=ExtResource("2_bk0f5")]
-position = Vector2(0, -144)
+[node name="Spots" type="Node2D" parent="." unique_id=631969492]
+unique_name_in_owner = true
 
-[node name="Spot2" parent="." unique_id=1530658633 instance=ExtResource("2_bk0f5")]
-position = Vector2(0, -72)
+[node name="Spot1" parent="Spots" unique_id=1844195097 instance=ExtResource("2_bk0f5")]
+position = Vector2(0, 224)
 
-[node name="Spot3" parent="." unique_id=2145291315 instance=ExtResource("2_bk0f5")]
+[node name="Spot2" parent="Spots" unique_id=1530658633 instance=ExtResource("2_bk0f5")]
+position = Vector2(0, 96)
 
-[node name="Spot4" parent="." unique_id=1370108424 instance=ExtResource("2_bk0f5")]
-position = Vector2(0, 72)
+[node name="Spot3" parent="Spots" unique_id=2145291315 instance=ExtResource("2_bk0f5")]
+position = Vector2(0, -32)
 
-[node name="Spot5" parent="." unique_id=599880129 instance=ExtResource("2_bk0f5")]
-position = Vector2(0, 144)
+[node name="Spot4" parent="Spots" unique_id=1370108424 instance=ExtResource("2_bk0f5")]
+position = Vector2(0, -160)
+
+[node name="Spot5" parent="Spots" unique_id=599880129 instance=ExtResource("2_bk0f5")]
+position = Vector2(0, -288)

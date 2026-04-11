@@ -109,7 +109,7 @@ collision_mask = 2
 input_pickable = true
 motion_mode = 1
 script = ExtResource("1_w87tj")
-sprite_size = Vector2i(64, 64)
+speed = 300.0
 
 [node name="DraggbleArea2D" type="Area2D" parent="." unique_id=1504426914]
 collision_layer = 128
@@ -133,6 +133,7 @@ hframes = 4
 vframes = 7
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1324076773]
+unique_name_in_owner = true
 libraries/ = SubResource("AnimationLibrary_80d3x")
 
 [node name="IdleTimer" type="Timer" parent="." unique_id=1650848253]
@@ -146,6 +147,14 @@ path_postprocessing = 1
 avoidance_enabled = true
 avoidance_mask = 3
 debug_path_custom_color = Color(1, 0.04000002, 0.04000002, 1)
+
+[node name="InitiativeLabel" type="Label" parent="." unique_id=1465727520]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(32, 32)
+offset_left = -32.0
+offset_top = -32.0
+theme_override_font_sizes/font_size = 40
+text = "9"
 
 [connection signal="body_entered" from="DraggbleArea2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="DraggbleArea2D" to="." method="_on_area_2d_body_exited"]

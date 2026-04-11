@@ -1,6 +1,91 @@
 [gd_scene format=3 uid="uid://drmci0psy2r5"]
 
 [ext_resource type="Script" uid="uid://cpsbdvcp0uiff" path="res://entities/legion/camp/camp.gd" id="1_qwl07"]
+[ext_resource type="PackedScene" uid="uid://cb5prxr0cwbfn" path="res://entities/legion/camp/tent/tent.tscn" id="2_m5rgw"]
+[ext_resource type="PackedScene" uid="uid://03ykgquheo2o" path="res://entities/arena/battlefield/phalanx/phalanx.tscn" id="3_5gt8n"]
 
-[node name="Camp" type="Node2D" unique_id=881419817]
+[node name="Camp" type="Node2D" unique_id=881419817 node_paths=PackedStringArray("current_spawn_phalanx")]
 script = ExtResource("1_qwl07")
+current_spawn_phalanx = NodePath("Phalanxs/Phalanx2")
+
+[node name="Markers" type="Node2D" parent="." unique_id=1897304492]
+unique_name_in_owner = true
+visible = false
+
+[node name="SpawnMarker1" type="Marker2D" parent="Markers" unique_id=1694168381]
+unique_name_in_owner = true
+position = Vector2(-136, -144)
+
+[node name="SpawnMarker2" type="Marker2D" parent="Markers" unique_id=1275505552]
+unique_name_in_owner = true
+position = Vector2(-264, -72)
+
+[node name="SpawnMarker3" type="Marker2D" parent="Markers" unique_id=817724792]
+unique_name_in_owner = true
+position = Vector2(-136, 0)
+
+[node name="SpawnMarker4" type="Marker2D" parent="Markers" unique_id=1384510509]
+unique_name_in_owner = true
+position = Vector2(-264, 72)
+
+[node name="SpawnMarker5" type="Marker2D" parent="Markers" unique_id=1986024356]
+unique_name_in_owner = true
+position = Vector2(-136, 144)
+
+[node name="Phalanxs" type="Node2D" parent="." unique_id=1063850488]
+unique_name_in_owner = true
+
+[node name="Phalanx1" parent="Phalanxs" unique_id=1605160790 instance=ExtResource("3_5gt8n")]
+unique_name_in_owner = true
+type = 0
+
+[node name="Phalanx2" parent="Phalanxs" unique_id=585097313 instance=ExtResource("3_5gt8n")]
+unique_name_in_owner = true
+position = Vector2(-96, 0)
+
+[node name="Phalanx3" parent="Phalanxs" unique_id=1663185727 instance=ExtResource("3_5gt8n")]
+unique_name_in_owner = true
+position = Vector2(-192, 0)
+
+[node name="Tents" type="Node2D" parent="." unique_id=1957796851]
+unique_name_in_owner = true
+position = Vector2(-320, 0)
+
+[node name="Tent1" parent="Tents" unique_id=1526950185 node_paths=PackedStringArray("camp") instance=ExtResource("2_m5rgw")]
+unique_name_in_owner = true
+position = Vector2(0, -288)
+camp = NodePath("../..")
+index = 1
+
+[node name="Tent2" parent="Tents" unique_id=1155726 node_paths=PackedStringArray("camp") instance=ExtResource("2_m5rgw")]
+unique_name_in_owner = true
+position = Vector2(0, -160)
+camp = NodePath("../..")
+type = 1
+index = 2
+
+[node name="Tent3" parent="Tents" unique_id=660678255 node_paths=PackedStringArray("camp") instance=ExtResource("2_m5rgw")]
+unique_name_in_owner = true
+position = Vector2(0, -32)
+camp = NodePath("../..")
+index = 3
+
+[node name="Tent4" parent="Tents" unique_id=806794502 node_paths=PackedStringArray("camp") instance=ExtResource("2_m5rgw")]
+unique_name_in_owner = true
+position = Vector2(0, 96)
+camp = NodePath("../..")
+type = 1
+index = 4
+
+[node name="Tent5" parent="Tents" unique_id=710996401 node_paths=PackedStringArray("camp") instance=ExtResource("2_m5rgw")]
+unique_name_in_owner = true
+position = Vector2(0, 224)
+camp = NodePath("../..")
+index = 5
+
+[node name="TentTimer" type="Timer" parent="." unique_id=3711662]
+unique_name_in_owner = true
+wait_time = 0.1
+autostart = true
+
+[connection signal="timeout" from="TentTimer" to="." method="_on_tent_timer_timeout"]

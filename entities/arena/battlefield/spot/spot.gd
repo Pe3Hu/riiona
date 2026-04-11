@@ -2,6 +2,9 @@ class_name Spot
 extends StaticBody2D
 
 
+var unit: Unit
+
+
 func _ready() -> void:
 	add_to_group("dropable")
 	modulate = Color(Color.MEDIUM_PURPLE, 0.7)
