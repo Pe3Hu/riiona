@@ -19,7 +19,6 @@ func _ready() -> void:
 #func get_tent() -> Tent:
 	#var tent = tents.get_child(index_)
 
-
 func _on_tent_timer_timeout() -> void:
 	for tent in tents.get_children():
 		tent.swapn_unit()

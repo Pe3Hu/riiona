@@ -1,31 +1,10 @@
 extends Node
 
 
-var is_dragging: bool = false
-var next_spot: Spot:
-	set(value_):
-		if value_ == null and next_spot != null:
-			if next_spot.unit != null:
-				next_spot.unit.set_collision_layer_value(2, true)
-		
-		next_spot = value_
-		
-		if next_spot != null:
-			if next_spot.unit != null:
-				next_spot.unit.set_collision_layer_value(2, false)
-var previous_spot: Spot:
-	set(value_):
-		if value_ == null and previous_spot != null:
-				if previous_spot.unit != null:
-					previous_spot.unit.set_collision_layer_value(2, true)
-		
-		previous_spot = value_
-		
-		if previous_spot != null:
-			if previous_spot.unit != null:
-				previous_spot.unit.set_collision_layer_value(2, false)
-
 const D6_SIZE = 6
+
+const LEGION_PAWN_DEFAULT_COUNT = 18
+const LEGION_ELITE_DEFAULT_COUNT = 12
 
 #region guise
 const eye_options = [State.Eye.GREEN, State.Eye.BLUE, State.Eye.BROWN]

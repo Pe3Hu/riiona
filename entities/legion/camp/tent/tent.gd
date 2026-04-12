@@ -14,7 +14,7 @@ extends Node2D
 @export var side: State.Side
 @export var index: int
 
-@onready var body_sprite: Sprite2D = $BodySprite  # Adjust node path as needed
+@onready var body_sprite: Sprite2D = %BodySprite  
 
 
 
@@ -34,5 +34,6 @@ func swapn_unit() -> void:
 	var initiative = camp.battlefield.units.get_child_count() % 10
 	camp.battlefield.units.add_child(unit)
 	unit.global_position = global_position
+	unit.type = type
 	unit.target_spot = spot
-	unit.update_initiative_label(initiative)
+	unit.ui.update_initiative_label(initiative)

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://0cdvplsw1i8t"
-path="res://.godot/imported/elite.png-d1bf545c2a35a536b10aa403e477520a.ctex"
+uid="uid://bocfhg5bxrxtm"
+path="res://.godot/imported/pawn_unit.png-aba647fe49c2d5b2c0d2245bdc6df2fc.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://entities/unit/images/elite.png"
-dest_files=["res://.godot/imported/elite.png-d1bf545c2a35a536b10aa403e477520a.ctex"]
+source_file="res://entities/unit/images/pawn_unit.png"
+dest_files=["res://.godot/imported/pawn_unit.png-aba647fe49c2d5b2c0d2245bdc6df2fc.ctex"]
 
 [params]
 

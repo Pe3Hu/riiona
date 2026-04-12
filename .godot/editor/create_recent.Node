@@ -1,8 +1,9 @@
+Sprite2D
 Label
+MarginContainer
 Node2D
 Timer
 Marker2D
-Sprite2D
 NavigationRegion2D
 StaticBody2D
 Area2D

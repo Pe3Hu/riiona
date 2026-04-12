@@ -25,6 +25,8 @@ Catalog="*res://global/Catalog.gd"
 State="*res://global/State.gd"
 Casino="*uid://coe05j8kut0rb"
 Judge="*uid://c0ppoijjrlay"
+Crane="*uid://ko6puwratrd4"
+Academy="*uid://bn8j0qrycmbpq"
 
 [display]
 
@@ -34,7 +36,9 @@ window/size/viewport_height=1080
 [file_customization]
 
 folder_colors={
+"res://entities/arena/": "green",
 "res://entities/casino/": "yellow",
+"res://entities/legion/": "purple",
 "res://entities/unit/": "red"
 }
 
