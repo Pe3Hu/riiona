@@ -1,0 +1,48 @@
+[gd_scene format=3 uid="uid://dn4uir7xq7adp"]
+
+[ext_resource type="Script" uid="uid://dbxgt8y1ik182" path="res://entities/arena/vanguard/duel/duel.gd" id="1_8c2d6"]
+[ext_resource type="PackedScene" uid="uid://bi66c6tn3msw" path="res://entities/arena/vanguard/duel/pool/pool.tscn" id="1_l57li"]
+
+[node name="Duel" type="Node2D" unique_id=155574144 node_paths=PackedStringArray("pools")]
+script = ExtResource("1_8c2d6")
+pools = [NodePath("HBoxContainer/Left/LeftPool"), NodePath("HBoxContainer/Right/RightPool")]
+
+[node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=1676890374]
+offset_right = 40.0
+offset_bottom = 40.0
+scale = Vector2(0.125, 0.125)
+
+[node name="Left" type="VBoxContainer" parent="HBoxContainer" unique_id=653450022]
+layout_mode = 2
+
+[node name="LeftPoolLabel" type="Label" parent="HBoxContainer/Left" unique_id=531992098]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 400
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="LeftPool" parent="HBoxContainer/Left" unique_id=1296281751 node_paths=PackedStringArray("label", "duel") instance=ExtResource("1_l57li")]
+layout_mode = 2
+side = 1
+label = NodePath("../LeftPoolLabel")
+duel = NodePath("../../..")
+
+[node name="Right" type="VBoxContainer" parent="HBoxContainer" unique_id=1398143679]
+layout_mode = 2
+
+[node name="RightPoolLabel" type="Label" parent="HBoxContainer/Right" unique_id=2061028751]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 1
+theme_override_font_sizes/font_size = 400
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="RightPool" parent="HBoxContainer/Right" unique_id=534251094 node_paths=PackedStringArray("label", "duel") instance=ExtResource("1_l57li")]
+layout_mode = 2
+label = NodePath("../RightPoolLabel")
+duel = NodePath("../../..")

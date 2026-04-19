@@ -1,0 +1,59 @@
+[gd_scene format=3 uid="uid://bi66c6tn3msw"]
+
+[ext_resource type="Script" uid="uid://c1q7yq5pkmcqa" path="res://entities/arena/vanguard/duel/pool/pool.gd" id="1_a8vdm"]
+[ext_resource type="PackedScene" uid="uid://bctfybwex4mlt" path="res://entities/arena/vanguard/duel/pool/dice/dice.tscn" id="2_nd76n"]
+[ext_resource type="PackedScene" uid="uid://wvkmxnaq7dxh" path="res://entities/arena/vanguard/duel/pool/box/box.tscn" id="3_633sr"]
+[ext_resource type="Shader" uid="uid://b1qcbbvtssnfl" path="res://entities/arena/vanguard/duel/pool/box/dissolve.gdshader" id="4_633sr"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_0pmkj"]
+render_priority = 0
+shader = ExtResource("4_633sr")
+shader_parameter/baseColor = Color(1, 1, 1, 1)
+shader_parameter/dissolveSlider = 0.0
+shader_parameter/dissolveNoiseScale = 2.0
+shader_parameter/baseOpacity = 1.0
+shader_parameter/edgeNoiseScale = 0.0
+shader_parameter/edgesThickness = 0.01
+shader_parameter/edgeColor = Color(1, 1, 1, 1)
+shader_parameter/edgeEmissionSlider = 1.0
+shader_parameter/enable_dissolve_animation = false
+shader_parameter/animation_speed = 1.0
+shader_parameter/animation_intensity = 0.2
+
+[sub_resource type="Environment" id="Environment_yiub4"]
+background_mode = 1
+background_color = Color(1, 1, 1, 1)
+ambient_light_source = 1
+reflected_light_source = 1
+
+[node name="Pool" type="SubViewportContainer" unique_id=1296281751 node_paths=PackedStringArray("camera", "box", "dice")]
+script = ExtResource("1_a8vdm")
+camera = NodePath("BoxSubViewport/BoxCamera")
+box = NodePath("BoxSubViewport/Box")
+dice = NodePath("DiceSubViewport/Dice")
+
+[node name="BoxSubViewport" type="SubViewport" parent="." unique_id=1845656364]
+transparent_bg = true
+handle_input_locally = false
+size = Vector2i(1024, 1024)
+render_target_update_mode = 4
+
+[node name="Box" parent="BoxSubViewport" unique_id=867340030 node_paths=PackedStringArray("dice") instance=ExtResource("3_633sr")]
+material_override = SubResource("ShaderMaterial_0pmkj")
+dice = NodePath("../../DiceSubViewport/Dice")
+
+[node name="BoxCamera" type="Camera3D" parent="BoxSubViewport" unique_id=182462441]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 5, 0)
+environment = SubResource("Environment_yiub4")
+projection = 1
+size = 6.5
+
+[node name="DiceSubViewport" type="SubViewport" parent="." unique_id=416900615]
+transparent_bg = true
+handle_input_locally = false
+size = Vector2i(1024, 1024)
+render_target_update_mode = 4
+
+[node name="Dice" parent="DiceSubViewport" unique_id=814110644 node_paths=PackedStringArray("pool", "camera") instance=ExtResource("2_nd76n")]
+pool = NodePath("../..")
+camera = NodePath("../../BoxSubViewport/BoxCamera")

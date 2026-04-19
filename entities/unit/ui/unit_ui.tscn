@@ -12,13 +12,15 @@ script = ExtResource("1_il1km")
 
 [node name="ImpulseLabel" type="Label" parent="." unique_id=878770685]
 unique_name_in_owner = true
+visible = false
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 size_flags_horizontal = 0
-size_flags_vertical = 0
+size_flags_vertical = 8
 theme_override_colors/font_color = Color(0.18, 0.54900026, 1, 1)
 theme_override_font_sizes/font_size = 24
 text = "0"
+vertical_alignment = 2
 
 [node name="HealthLabel" type="Label" parent="." unique_id=1233116342]
 unique_name_in_owner = true
@@ -33,6 +35,7 @@ horizontal_alignment = 2
 
 [node name="MoralLabel" type="Label" parent="." unique_id=217171510]
 unique_name_in_owner = true
+visible = false
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 size_flags_horizontal = 8
@@ -48,8 +51,7 @@ unique_name_in_owner = true
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 size_flags_horizontal = 0
-size_flags_vertical = 8
+size_flags_vertical = 0
 theme_override_colors/font_color = Color(0.31600004, 1, 0.27999997, 1)
 theme_override_font_sizes/font_size = 24
 text = "0"
-vertical_alignment = 2

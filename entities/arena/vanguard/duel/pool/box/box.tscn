@@ -1,0 +1,46 @@
+[gd_scene format=3 uid="uid://wvkmxnaq7dxh"]
+
+[ext_resource type="Shader" uid="uid://b1qcbbvtssnfl" path="res://entities/arena/vanguard/duel/pool/box/dissolve.gdshader" id="1_q46lv"]
+[ext_resource type="Script" uid="uid://cj323pj8nfwfl" path="res://entities/arena/vanguard/duel/pool/box/box.gd" id="2_c508l"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_hgs2f"]
+render_priority = 0
+shader = ExtResource("1_q46lv")
+shader_parameter/baseColor = Color(1, 1, 1, 1)
+shader_parameter/dissolveSlider = 0.0
+shader_parameter/dissolveNoiseScale = 2.0
+shader_parameter/baseOpacity = 1.0
+shader_parameter/edgeNoiseScale = 0.0
+shader_parameter/edgesThickness = 0.01
+shader_parameter/edgeColor = Color(1, 1, 1, 1)
+shader_parameter/edgeEmissionSlider = 1.0
+shader_parameter/enable_dissolve_animation = false
+shader_parameter/animation_speed = 1.0
+shader_parameter/animation_intensity = 0.2
+
+[sub_resource type="BoxMesh" id="BoxMesh_q46lv"]
+size = Vector3(4.95, 4.95, 4.95)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_q46lv"]
+render_priority = 0
+shader = ExtResource("1_q46lv")
+shader_parameter/baseColor = Color(1, 1, 1, 1)
+shader_parameter/dissolveSlider = 0.0
+shader_parameter/dissolveNoiseScale = 2.0
+shader_parameter/baseOpacity = 1.0
+shader_parameter/edgeNoiseScale = 0.0
+shader_parameter/edgesThickness = 0.01
+shader_parameter/edgeColor = Color(0, 0, 1, 1)
+shader_parameter/edgeEmissionSlider = 1.0
+shader_parameter/enable_dissolve_animation = false
+shader_parameter/animation_speed = 1.0
+shader_parameter/animation_intensity = 0.2
+
+[node name="Box" type="MeshInstance3D" unique_id=867340030]
+layers = 1048575
+sorting_offset = -10.0
+material_override = SubResource("ShaderMaterial_hgs2f")
+transparency = 1.0
+mesh = SubResource("BoxMesh_q46lv")
+surface_material_override/0 = SubResource("ShaderMaterial_q46lv")
+script = ExtResource("2_c508l")

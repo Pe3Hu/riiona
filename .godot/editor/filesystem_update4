@@ -1,13 +1,5 @@
-res://global/Catalog.gd
-res://entities/arena/battlefield/spot/spot.gd
-res://entities/unit/unit.gd
-res://entities/unit/ui/unit_ui.tscn
-res://entities/unit/ui/unit_ui.gd
-res://entities/unit/unit.tscn
-res://entities/legion/camp/tent/tent.gd
-res://entities/legion/camp/tent/tent.tscn
-res://entities/arena/battlefield/spot/spot.tscn
-res://global/Crane.gd
-res://entities/legion/legion_resource.gd
+res://entities/arena/vanguard/duel/pool/pool.tscn
+res://entities/arena/vanguard/duel/duel.tscn
 res://global/Academy.gd
-res://entities/legion/camp/camp.gd
+res://entities/arena/vanguard/duel/pool/box/box.gd
+res://entities/arena/vanguard/duel/pool/dice/dice.gd

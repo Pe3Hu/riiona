@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://dl77yvk8j2bcl"]
+
+[ext_resource type="Script" uid="uid://d0uhclr75kfxu" path="res://entities/arena/vanguard/vanguard.gd" id="1_odtu7"]
+
+[node name="Vanguard" type="Node2D" unique_id=1591894832]
+script = ExtResource("1_odtu7")

@@ -12,6 +12,7 @@ outlines = Array[PackedVector2Array]([PackedVector2Array(-996, -595, 900, -623, 
 script = ExtResource("1_vigat")
 
 [node name="Camp" parent="." unique_id=881419817 node_paths=PackedStringArray("battlefield") instance=ExtResource("2_sbs5h")]
+position = Vector2(-128, 0)
 battlefield = NodePath("..")
 
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="." unique_id=1810052088]
