@@ -11,14 +11,13 @@ extends Node2D
 @export var janitor: Janitor
 @export var path: Path2D
 @export var path_follow: PathFollow2D
+@export var trail_sprite: Sprite2D
 
 
 func activate() -> void:
+	Engine.time_scale = 1.0
 	janitor.is_retreating = true
 	janitor.last_position = janitor.global_position
-	#janitor.collision_layer = 0
-	#janitor.collision_mask = 0
-	#janitor.z_index = 11
 	
 	var tween = create_tween()
 	tween.tween_property(path_follow, "progress_ratio", 1, time)
@@ -26,6 +25,11 @@ func activate() -> void:
 
 func reset_path() -> void:
 	janitor.is_retreating = false
+	janitor.velocity = Vector2.ZERO
 	#janitor.rest_collision()
 	path_follow.progress_ratio = 0
-	camp.janitor_finished.emit(self)
+	camp.battlefield.janitor_finished.emit(janitor)
+
+
+func _on_grave_area_body_entered(body_: Node2D) -> void:
+	body_.visible = false

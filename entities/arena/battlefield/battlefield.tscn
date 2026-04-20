@@ -43,5 +43,5 @@ offset_right = 21.0
 offset_bottom = 376.0
 text = "ready"
 
-[connection signal="camp_fallback_finished" from="." to="." method="_on_camp_fallback_finished"]
+[connection signal="janitor_finished" from="." to="." method="_on_janitor_finished"]
 [connection signal="pressed" from="ReadyButton" to="." method="_on_ready_button_pressed"]

@@ -2,11 +2,11 @@ class_name StanceResource
 extends Resource
 
 
-@export var unit: UnitResource
+@export var soldier: SoldierResource
 @export var dice: StanceDiceResource
 
 
-func _init(unit_: UnitResource) -> void:
-	unit = unit_
+func _init(soldier_: SoldierResource) -> void:
+	soldier = soldier_
 	
-	dice = StanceDiceResource.new(unit)
+	dice = StanceDiceResource.new(soldier)

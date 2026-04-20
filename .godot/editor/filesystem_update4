@@ -1,11 +1,7 @@
 res://entities/legion/camp/graveyard/graveyard.tscn
-res://entities/legion/legion_resource.gd
-res://global/Academy.gd
-res://entities/arena/vanguard/duel/pool/dice/stance_dice_resource.gd
-res://entities/legion/camp/camp.gd
-res://entities/legion/camp/fallback/fallback.gd
+res://entities/unit/soldier/soldier.tscn
+res://entities/unit/janitor/janitor.tscn
 res://entities/legion/camp/graveyard/graveyard.gd
 res://entities/unit/janitor/janitor.gd
-res://entities/unit/janitor/janitor.tscn
 res://entities/unit/soldier/soldier.gd
-res://entities/unit/unit.gd
+res://entities/unit/unit.tscn

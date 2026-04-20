@@ -8,6 +8,7 @@ extends Node2D
 @export var tent: Tent
 @export var soldier: Soldier:
 	set(value_):
+		#if value_ == null: return
 		soldier = value_
 		soldier.tent.camp.battlefield.soldiers.remove_child(soldier)
 		soldier.position = Vector2()
@@ -43,7 +44,7 @@ func reset_path() -> void:
 	soldier.is_retreating = false
 	soldier.rest_collision()
 	path_follow.progress_ratio = 0
-	tent.camp.fallback_finished.emit(self)
+	#tent.camp.fallback_finished.emit(self)
 
 func switch_side() -> void:
 	var points: Array[Vector2]

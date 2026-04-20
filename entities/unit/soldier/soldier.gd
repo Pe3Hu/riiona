@@ -33,15 +33,15 @@ var original_z_index: int
 
 
 func _ready() -> void:
-	collision_layer = 2
-	collision_mask = 2
+	collision_layer = 1 << Catalog.UNIT_LAYER
+	collision_mask = 1 << Catalog.UNIT_LAYER
 	original_collision_layer = collision_layer
 	original_collision_mask = collision_mask
 	original_z_index = z_index
 	
 	if drag_area:
-		drag_area.collision_layer = 8
-		drag_area.collision_mask = 8
+		drag_area.collision_layer = 1 << Catalog.DRAG_AND_DROP_LAYER
+		drag_area.collision_mask = 1 << Catalog.DRAG_AND_DROP_LAYER
 		drag_area.mouse_entered.connect(_on_mouse_entered)
 		drag_area.mouse_exited.connect(_on_mouse_exited)
 		drag_area.body_entered.connect(_on_drop_area_entered)
@@ -224,6 +224,7 @@ func detach_from_spot() -> void:
 	current_spot = null
 
 func update_target_spot() -> void:
+	if !is_alive: return
 	var spots = tent.fallback.spots
 	var spot_index = (spots.find(current_spot) + 1) % spots.size()
 	target_spot = spots[spot_index]
@@ -297,6 +298,12 @@ func duel_won() -> void:
 
 func death() -> void:
 	is_alive = false
+	enable_snake_area()
+	collision_layer |= 1 << Catalog.JANITOR_LAYER
+	collision_mask |= 1 << Catalog.JANITOR_LAYER
+	#%DraggbleArea2D.collision_layer |= 1 << Catalog.JANITOR_LAYER
+	##%DraggbleArea2D.collision_mask = 0
+	z_index = Catalog.JANITOR_LAYER
 
 func victory() -> void:
 	pass
@@ -308,3 +315,25 @@ func _on_animation_player_animation_finished(animation_name_: String) -> void:
 			is_idle = true
 		"defeat":
 			is_idle = true
+
+
+func _on_snake_area_body_entered(body_: Node2D) -> void:
+	if body_ as Soldier:
+		tent.camp.graveyard.janitor.collect_soldier(body_)
+
+
+func enable_snake_area() -> void:
+	%SnakeArea.set_deferred("monitoring", false)
+	%SnakeArea.set_deferred("monitorable", false)
+
+func disable_snake_area() -> void:
+	%SnakeArea.set_deferred("monitoring", true)
+	%SnakeArea.set_deferred("monitorable", true)
+
+#func enable_snake_area() -> void:
+	#%SnakeArea.monitorable = false
+	#%SnakeArea.monitoring = false
+#
+#func disable_snake_area() -> void:
+	#%SnakeArea.monitorable = true
+	#%SnakeArea.monitoring = true

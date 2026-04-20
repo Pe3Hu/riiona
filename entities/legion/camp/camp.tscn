@@ -117,5 +117,4 @@ tent = NodePath("../../Tents/Tent5")
 position = Vector2(0, 416)
 camp = NodePath("..")
 
-[connection signal="fallback_finished" from="." to="." method="_on_fallback_finished"]
 [connection signal="timeout" from="TentTimer" to="." method="_on_tent_timer_timeout"]

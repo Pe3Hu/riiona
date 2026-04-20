@@ -7,18 +7,39 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_h1r3i"]
 size = Vector2(64, 64)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_eg5ur"]
+size = Vector2(64, 16)
+
 [node name="Soldier" unique_id=324963147 instance=ExtResource("1_eifwn")]
+collision_layer = 34
+collision_mask = 34
 script = ExtResource("2_eg5ur")
+
+[node name="CollisionShape2D" parent="." index="0" unique_id=111906626]
+debug_color = Color(0.98607785, 0, 0.3320391, 0.41960785)
 
 [node name="DraggbleArea2D" type="Area2D" parent="." index="1" unique_id=1903108548]
 unique_name_in_owner = true
-collision_layer = 128
+collision_layer = 4
 collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DraggbleArea2D" index="0" unique_id=1162678770]
 shape = SubResource("RectangleShape2D_h1r3i")
+debug_color = Color(0.71286684, 0.4817844, 0.1465292, 0.41960785)
 
-[node name="UnitUI" parent="." index="7" unique_id=157505972 instance=ExtResource("2_cl4jn")]
+[node name="SnakeArea" type="Area2D" parent="." index="2" unique_id=1365133832]
+unique_name_in_owner = true
+position = Vector2(0, -32)
+collision_layer = 16
+collision_mask = 16
+monitoring = false
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SnakeArea" index="0" unique_id=792056765]
+shape = SubResource("RectangleShape2D_eg5ur")
+debug_color = Color(0.69105965, 0.42790362, 0.6718197, 0.41960785)
+
+[node name="UnitUI" parent="." index="8" unique_id=157505972 instance=ExtResource("2_cl4jn")]
 unique_name_in_owner = true
 offset_left = -32.0
 offset_top = -32.0
@@ -30,3 +51,4 @@ offset_bottom = 32.0
 [connection signal="input_event" from="DraggbleArea2D" to="." method="_on_draggble_area_2d_input_event"]
 [connection signal="mouse_entered" from="DraggbleArea2D" to="." method="_on_area_2d_mouse_entered"]
 [connection signal="mouse_exited" from="DraggbleArea2D" to="." method="_on_area_2d_mouse_exited"]
+[connection signal="body_entered" from="SnakeArea" to="." method="_on_snake_area_body_entered"]

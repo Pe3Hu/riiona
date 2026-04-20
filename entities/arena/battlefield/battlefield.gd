@@ -4,6 +4,7 @@ extends Node2D
 
 
 signal camp_fallback_finished(camp_: Camp)
+signal janitor_finished(janitor_: Janitor)
 
 @onready var soldiers = %Soldiers
 
@@ -37,8 +38,8 @@ func roster_shuffle() -> void:
 	for camp in camps:
 		camp.roster_shuffle()
 
-func _on_camp_fallback_finished(camp_: Camp) -> void:
-	active_camps.erase(camp_)
+func _on_janitor_finished(janitor_: Janitor) -> void:
+	active_camps.erase(janitor_.graveyard.camp)
 	
 	if active_camps.is_empty():
 		fill_vanduard()

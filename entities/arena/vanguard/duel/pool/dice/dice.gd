@@ -60,6 +60,12 @@ func _input(event: InputEvent) -> void:
 		if event.keycode == KEY_SPACE:
 			start_roll()
 
+func start_fake_roll() -> void:
+	if pool.side == State.Side.RIGHT:
+		pool.label.text = str(1)
+	
+	pool.duel.active_dices.append(self)
+
 func start_roll() -> void:
 	visible = true
 	pool.duel.active_dices.append(self)
@@ -218,6 +224,12 @@ func stop_roll() -> void:
 func update_label() -> void:
 	var old_text = pool.label.text
 	var new_value = int(old_text) + get_top_face_value()
+	
+	if pool.side == State.Side.RIGHT:
+		new_value = 69
+	else:
+		new_value = 99
+	
 	var stretch_tween = LabelManager.stretch_label(pool.label, str(new_value))
 	await stretch_tween.finished
 	dissolve()

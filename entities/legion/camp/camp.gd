@@ -3,7 +3,7 @@ class_name Camp
 extends Node2D
 
 
-signal fallback_finished(fallback_: Fallback)
+#signal fallback_finished(fallback_: Fallback)
 
 
 @export var battlefield: Battlefield
@@ -58,9 +58,12 @@ func switch_side() -> void:
 	if phalanxs:
 		for phalanx in phalanxs:
 			phalanx.position.x *= -1 
-	
+			
 	if tents:
-		%Tents.position.x *= -1 
+		%Tents.position.x *= -1
+		
+		for tent in %Tents.get_children():
+			tent.side = Catalog.side_to_side[tent.side]
 	
 	if fallbacks:
 		for fallback in fallbacks:
@@ -86,8 +89,8 @@ func roster_shuffle() -> void:
 	for fallback in fallbacks:
 		fallback.activate()
 
-func _on_fallback_finished(fallback_: Fallback) -> void:
-	active_fallbacks.erase(fallback_)
-	
-	if active_fallbacks.is_empty():
-		battlefield.camp_fallback_finished.emit(self)
+#func _on_fallback_finished(fallback_: Fallback) -> void:
+	#active_fallbacks.erase(fallback_)
+	#
+	#if active_fallbacks.is_empty():
+		#pass

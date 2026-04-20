@@ -37,11 +37,16 @@ func distribute_pools() -> void:
 		pool.soldier = soldier
 		soldier.pool = pool
 
-func roll_dices() -> void:
+func reset_dices() -> void:
 	for pool in pools:
 		pool.reset()
 
-func reset_dices() -> void:
+func roll_dices() -> void:
+	#for pool in pools:
+		#pool.dice.start_fake_roll()
+	#
+	#for pool in pools:
+		#roll_finished.emit(pool.dice)
 	for pool in pools:
 		pool.dice.start_roll()
 

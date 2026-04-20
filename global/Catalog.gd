@@ -8,6 +8,11 @@ const DUEL_UNIT_DEFAULT_COUNT = 2
 const LEGION_PAWN_DEFAULT_COUNT = 18
 const LEGION_ELITE_DEFAULT_COUNT = 12
 
+const UNIT_LAYER = 1
+const SOLDIER_LAYER = 2
+const DRAG_AND_DROP_LAYER = 3
+const JANITOR_LAYER = 4
+
 #region guise
 const eye_options = [State.Eye.GREEN, State.Eye.BLUE, State.Eye.BROWN]
 const hair_options = [State.Hair.DARK, State.Hair.RED, State.Hair.BLONDE]
@@ -88,4 +93,9 @@ const duel_to_string = {
 	State.Duel.TIE: "tie",
 	State.Duel.VICTORY: "victory",
 	State.Duel.DEFEAT: "defeat",
+}
+
+const side_to_side = {
+	State.Side.LEFT: State.Side.RIGHT,
+	State.Side.RIGHT: State.Side.LEFT
 }

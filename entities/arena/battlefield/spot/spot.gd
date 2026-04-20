@@ -20,7 +20,7 @@ var pool: Pool
 
 
 func _ready() -> void:
-	collision_layer = 8
+	collision_layer = 1 << Catalog.DRAG_AND_DROP_LAYER
 	collision_mask = 0
 	add_to_group("dropable")
 	update_visual(normal_color)
