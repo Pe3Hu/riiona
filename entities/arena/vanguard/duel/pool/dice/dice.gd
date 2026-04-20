@@ -62,6 +62,7 @@ func _input(event: InputEvent) -> void:
 
 func start_roll() -> void:
 	visible = true
+	pool.duel.active_dices.append(self)
 	pool.box.reset()
 	
 	if tween:
@@ -165,7 +166,7 @@ func animate_steps() -> void:
 
 	tween.finished.connect(stop_roll)
 
-func get_top_face() -> int:
+func get_top_face_value() -> int:
 	var best_dot: float = -1.0
 	var best_index: int = 0
 
@@ -212,11 +213,11 @@ func stop_roll() -> void:
 	global_transform.basis = target_basis
 	update_label()
 	pool.duel.active_dices.erase(self)
-	pool.duel.update_state()
+	#pool.duel.update_state()
 
 func update_label() -> void:
 	var old_text = pool.label.text
-	var new_value = int(old_text) + get_top_face()
+	var new_value = int(old_text) + get_top_face_value()
 	var stretch_tween = LabelManager.stretch_label(pool.label, str(new_value))
 	await stretch_tween.finished
 	dissolve()
@@ -224,6 +225,8 @@ func update_label() -> void:
 func dissolve() -> void:
 	visible = false
 	pool.box.start_dissolve()
+	await pool.box.dissolve_tween.finished
+	pool.duel.roll_finished.emit(self)
 
 #func _on_tree_entered() -> void:
 	#SignalManager.impulse_dice_rolled.connect(start_roll)

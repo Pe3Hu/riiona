@@ -1,0 +1,25 @@
+[gd_scene format=3 uid="uid://bdoqbh3iq6kl7"]
+
+[ext_resource type="Script" uid="uid://dqcwgupr12bjg" path="res://entities/legion/camp/fallback/fallback.gd" id="1_5ovra"]
+
+[sub_resource type="Curve2D" id="Curve2D_dq7hq"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 0, -288, 0, 0, 0, 0, -96, -256, 0, 0, 0, 0, -196, -256, 0, 0, 0, 0, -196, -320, 0, 0, 0, 0, -192, -320)
+}
+point_count = 5
+
+[node name="Fallback" type="Node2D" unique_id=1292713494 node_paths=PackedStringArray("path", "path_follow")]
+script = ExtResource("1_5ovra")
+path = NodePath("Path")
+path_follow = NodePath("Path/PathFollow")
+
+[node name="Path" type="Path2D" parent="." unique_id=1012818448]
+unique_name_in_owner = true
+position = Vector2(0, -32)
+curve = SubResource("Curve2D_dq7hq")
+
+[node name="PathFollow" type="PathFollow2D" parent="Path" unique_id=1032274317]
+unique_name_in_owner = true
+position = Vector2(0, -288)
+rotates = false
+loop = false

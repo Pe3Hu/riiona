@@ -1,8 +1,0 @@
-[gd_resource type="Resource" script_class="ImpulseDiceResource" format=3 uid="uid://035siwon1g4f"]
-
-[ext_resource type="Script" uid="uid://cam0ibgelbbxd" path="res://entities/casino/dice/impulse/impulse_dice_resource.gd" id="1_oay3k"]
-
-[resource]
-script = ExtResource("1_oay3k")
-faces = [0, 0, 0, 5, 5, 10]
-metadata/_custom_type_script = "uid://cam0ibgelbbxd"

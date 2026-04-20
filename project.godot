@@ -38,7 +38,6 @@ window/size/viewport_height=1080
 
 folder_colors={
 "res://entities/arena/": "green",
-"res://entities/casino/": "yellow",
 "res://entities/legion/": "purple",
 "res://entities/unit/": "red"
 }

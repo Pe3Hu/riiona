@@ -3,19 +3,42 @@ class_name Battlefield
 extends Node2D
 
 
-@onready var units = %Units
+signal camp_fallback_finished(camp_: Camp)
 
+@onready var soldiers = %Soldiers
+
+@export var camps: Array[Camp]
+@export var vanguard: Vanguard
+
+var is_selection_phase: bool = true
+
+var active_camps: Array[Camp]
 
 
 func _ready() -> void:
-	pass
+	soldiers_motion_simulation()
+	is_selection_phase = false
 
+func soldiers_motion_simulation() -> void:
+	if is_selection_phase:
+		await get_tree().create_timer(1.5).timeout
+	fill_vanduard()
+	#await get_tree().create_timer(0.9).timeout
+	#roster_shuffle()
 
-#func move_unit(target: Vector2) -> void:
-	#unit.move_to(target)
+func _on_ready_button_pressed() -> void:
+	soldiers_motion_simulation()
 
+func fill_vanduard() -> void:
+	for camp in camps:
+		camp.update_soldier_target_spots()
 
-#func _process(_delta: float) -> void:
-	#if Input.is_action_just_pressed("click"):
-		#var target_position = get_global_mouse_position()
-		#move_unit(target_position)
+func roster_shuffle() -> void:
+	for camp in camps:
+		camp.roster_shuffle()
+
+func _on_camp_fallback_finished(camp_: Camp) -> void:
+	active_camps.erase(camp_)
+	
+	if active_camps.is_empty():
+		fill_vanduard()

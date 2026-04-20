@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://bqdkqw1gsk4at"]
+
+[ext_resource type="PackedScene" uid="uid://b3lborblpvleg" path="res://entities/unit/unit.tscn" id="1_k53uu"]
+[ext_resource type="Script" uid="uid://d23uml2gc51y3" path="res://entities/unit/janitor/janitor.gd" id="2_trr73"]
+[ext_resource type="Texture2D" uid="uid://byrhcnsfg0qkk" path="res://entities/unit/janitor/images/janitor_walk.png" id="3_aiix3"]
+
+[node name="Janitor" unique_id=324963147 instance=ExtResource("1_k53uu")]
+z_index = 11
+script = ExtResource("2_trr73")
+
+[node name="BodySprite" parent="." index="2" unique_id=2143899903]
+texture = ExtResource("3_aiix3")
+vframes = 4

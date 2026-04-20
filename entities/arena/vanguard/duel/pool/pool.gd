@@ -17,16 +17,25 @@ extends SubViewportContainer
 @export var box: DiceBox
 @export var dice: Dice
 
+var soldier: Soldier
+
 
 func update_positions() -> void:
 	box_size = box_size
 	var anchor = Vector3.ZERO
+	
 	match side:
 		State.Side.LEFT:
 			anchor.x = -100
 		State.Side.RIGHT:
 			anchor.x = 100
 	
+	if duel:
+		anchor.z = 128 * duel.index
+	
 	dice.position = anchor
 	box.position = anchor
 	camera.position = anchor
+
+func reset() -> void:
+	visible = true

@@ -1,4 +1,4 @@
-class_name UnitResource
+class_name SoldierResource
 extends Resource
 
 
@@ -8,12 +8,12 @@ var guise: GuiseResource = GuiseResource.new(self)
 var stance: StanceDiceResource
 var impulse: ImpulseDiceResource
 
-var type: State.Unit
+var type: State.Soldier
 var initiative: int
 var mastery: int = 1
 
 
-func _init(type_: State.Unit, initiative_: int) -> void:
+func _init(type_: State.Soldier, initiative_: int) -> void:
 	type = type_
 	initiative = initiative_
 	

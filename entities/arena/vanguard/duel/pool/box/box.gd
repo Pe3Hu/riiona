@@ -51,7 +51,6 @@ func start_roll() -> void:
 	
 	animate_steps()
 
-
 func animate_steps() -> void:
 	var b: Basis = dice.current_basis
 

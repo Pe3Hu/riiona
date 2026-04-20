@@ -3,6 +3,8 @@ extends Node
 
 const D6_SIZE = 6
 
+const DUEL_UNIT_DEFAULT_COUNT = 2
+
 const LEGION_PAWN_DEFAULT_COUNT = 18
 const LEGION_ELITE_DEFAULT_COUNT = 12
 
@@ -67,9 +69,9 @@ const combo_to_string = {
 #endregion
 
 
-const unit_to_string = {
-	State.Unit.PAWN: "pawn",
-	State.Unit.ELITE: "elite"
+const soldier_to_string = {
+	State.Soldier.PAWN: "pawn",
+	State.Soldier.ELITE: "elite"
 }
 
 const side_to_string = {
@@ -80,4 +82,10 @@ const side_to_string = {
 const phalanx_to_offset = {
 	State.Phalanx.TIGHT: Vector2(0, -128),
 	State.Phalanx.GAP: Vector2(0, -128),
+}
+
+const duel_to_string = {
+	State.Duel.TIE: "tie",
+	State.Duel.VICTORY: "victory",
+	State.Duel.DEFEAT: "defeat",
 }

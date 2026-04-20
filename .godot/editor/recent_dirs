@@ -1,10 +1,11 @@
+res://entities/unit/janitor/
+res://entities/unit/
+res://entities/unit/soldier/
+res://entities/legion/camp/fallback/
 res://entities/arena/vanguard/duel/pool/dice/
 res://entities/arena/vanguard/duel/pool/box/
 res://entities/arena/vanguard/duel/pool/
 res://global/
-res://entities/unit/
-res://entities/unit/images/
-res://entities/casino/dice/impulse/
 D:/godot/templates/blank template/assets/fonts/
 res://assets/fonts/
 res://entities/world/

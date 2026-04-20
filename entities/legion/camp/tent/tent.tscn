@@ -2,11 +2,11 @@
 
 [ext_resource type="Script" uid="uid://dbrqwibe82iil" path="res://entities/legion/camp/tent/tent.gd" id="1_h6exp"]
 [ext_resource type="Texture2D" uid="uid://88cthg2tnwvy" path="res://entities/legion/camp/tent/images/pawn_tent.png" id="2_br1ty"]
-[ext_resource type="PackedScene" uid="uid://b3lborblpvleg" path="res://entities/unit/unit.tscn" id="2_i5osm"]
+[ext_resource type="PackedScene" uid="uid://c23065cnxja0g" path="res://entities/unit/soldier/soldier.tscn" id="2_i5osm"]
 
 [node name="Tent" type="Node2D" unique_id=1526950185]
 script = ExtResource("1_h6exp")
-unit_scene = ExtResource("2_i5osm")
+soldier_scene = ExtResource("2_i5osm")
 
 [node name="BodySprite" type="Sprite2D" parent="." unique_id=551576610]
 unique_name_in_owner = true

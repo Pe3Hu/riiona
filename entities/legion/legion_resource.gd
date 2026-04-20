@@ -2,32 +2,32 @@ class_name LegionResource
 extends Resource
 
 
-var pawn_units: Array[UnitResource]
-var elite_units: Array[UnitResource]
+var pawn_soldiers: Array[SoldierResource]
+var elite_soldiers: Array[SoldierResource]
 var battlefield: BattlefieldResource
 
 
 func _init() -> void:
-	init_units()
+	init_soldiers()
 
-func init_units() -> void:
+func init_soldiers() -> void:
 	init_pawns()
 	init_elites()
 
 func init_pawns() -> void:
 	for _i in Catalog.LEGION_PAWN_DEFAULT_COUNT:
-		add_unit(State.Unit.PAWN)
+		add_soldier(State.Soldier.PAWN)
 
 func init_elites() -> void:
 	for _i in Catalog.LEGION_ELITE_DEFAULT_COUNT:
-		add_unit(State.Unit.ELITE)
+		add_soldier(State.Soldier.ELITE)
 
-func add_unit(type_: State.Unit) -> void:
+func add_soldier(type_: State.Soldier) -> void:
 	var initiative = Academy.roll_initiative(type_)
-	var unit = UnitResource.new(type_, initiative)
+	var soldier = SoldierResource.new(type_, initiative)
 	
 	match type_:
-		State.Unit.PAWN:
-			pawn_units.append(unit)
-		State.Unit.ELITE:
-			elite_units.append(unit)
+		State.Soldier.PAWN:
+			pawn_soldiers.append(soldier)
+		State.Soldier.ELITE:
+			elite_soldiers.append(soldier)

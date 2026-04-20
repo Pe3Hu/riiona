@@ -1,14 +1,18 @@
 class_name Spot
 extends StaticBody2D
 
-signal unit_changed(spot: Spot, unit: Unit)
 
-var unit: Unit:
+#signal soldier_changed(soldier_: Soldier)
+
+var soldier: Soldier:
 	set(value):
-		unit = value
-		if unit:
-			unit.current_spot = self
+		soldier = value
+		if soldier:
+			soldier.current_spot = self
+var pool: Pool
 
+@export var phalanx: Phalanx
+@export var index: int
 @export var normal_color: Color = Color.MEDIUM_PURPLE
 @export var highlight_color: Color = Color.ROYAL_BLUE
 
@@ -21,39 +25,43 @@ func _ready() -> void:
 	add_to_group("dropable")
 	update_visual(normal_color)
 
-#region unit
-func attach_unit(new_unit: Unit) -> void:
-	if unit == new_unit:
-		return
+#region soldier
+func attach_soldier(new_soldier: Soldier) -> void:
+	if soldier == new_soldier: return
 	
-	if unit:
-		unit.detach_from_spot()
+	if soldier:
+		soldier.detach_from_spot()
 	
-	unit = new_unit
-	if unit:
-		unit.current_spot = self
+	soldier = new_soldier
+	
+	if soldier:
+		soldier.current_spot = self
+		soldier.tent = phalanx.camp.tents[index - 1]
+		
+		if pool != null:
+			pool.duel.soldier_joined.emit(soldier)
 	
 	update_visual_by_occupancy()
-	unit_changed.emit(self, unit)
+	#soldier_changed.emit(self, soldier)
 
-func detach_unit() -> void:
-	if unit:
-		unit_changed.emit(self, null)
-		unit.current_spot = null
-		unit = null
+func detach_soldier() -> void:
+	if soldier:
+		#soldier_changed.emit(self, null)
+		soldier.current_spot = null
+		soldier = null
 		update_visual_by_occupancy()
 #endregion
 
 #region visual
 func update_visual_by_occupancy() -> void:
-	if unit:
+	if soldier:
 		if border_sprite:
 			border_sprite.modulate = Color.RED
 	else:
 		update_visual(normal_color)
 
-func set_unit_internal(unit_: Unit) -> void:
-	unit = unit_
+func set_soldier_internal(soldier_: Soldier) -> void:
+	soldier = soldier_
 	update_visual_by_occupancy()
 
 func set_highlight(is_active_: bool) -> void:
@@ -66,3 +74,7 @@ func update_visual(color_: Color) -> void:
 	if border_sprite:
 		border_sprite.modulate = color_
 #endregion
+
+
+#func _on_soldier_changed(soldier: Soldier) -> void:
+	#pass # Replace with function body.

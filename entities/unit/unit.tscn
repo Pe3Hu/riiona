@@ -1,12 +1,8 @@
 [gd_scene format=3 uid="uid://b3lborblpvleg"]
 
 [ext_resource type="Script" uid="uid://fop43vo0vxrt" path="res://entities/unit/unit.gd" id="1_w87tj"]
-[ext_resource type="Texture2D" uid="uid://f5e8jsoj4drs" path="res://entities/unit/images/shadow.png" id="2_h1r3i"]
-[ext_resource type="Texture2D" uid="uid://bocfhg5bxrxtm" path="res://entities/unit/images/pawn_unit.png" id="3_p0kfm"]
-[ext_resource type="PackedScene" uid="uid://cfygdmge5xs41" path="res://entities/unit/ui/unit_ui.tscn" id="4_h1r3i"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_h1r3i"]
-size = Vector2(64, 64)
+[ext_resource type="Texture2D" uid="uid://f5e8jsoj4drs" path="res://entities/unit/soldier/images/shadow.png" id="2_h1r3i"]
+[ext_resource type="Texture2D" uid="uid://bocfhg5bxrxtm" path="res://entities/unit/soldier/images/pawn_soldier.png" id="3_p0kfm"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_p0kfm"]
 radius = 32.0
@@ -24,6 +20,86 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [Vector2i(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_h1r3i"]
+resource_name = "defeat"
+length = 0.6
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("BodySprite:frame_coords")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [Vector2i(0, 0), Vector2i(0, 6)]
+}
+
+[sub_resource type="Animation" id="Animation_f5ot1"]
+resource_name = "punchLeft"
+length = 0.6
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("BodySprite:frame_coords")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [Vector2i(3, 0), Vector2i(3, 4)]
+}
+
+[sub_resource type="Animation" id="Animation_6v3vn"]
+resource_name = "punchRight"
+length = 0.6
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("BodySprite:frame_coords")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [Vector2i(2, 0), Vector2i(2, 4)]
+}
+
+[sub_resource type="Animation" id="Animation_wnbve"]
+resource_name = "special"
+length = 0.6
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("BodySprite:frame_coords")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [Vector2i(0, 0), Vector2i(2, 6), Vector2i(3, 6)]
+}
+
+[sub_resource type="Animation" id="Animation_wi85q"]
+resource_name = "victory"
+length = 0.6
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("BodySprite:frame_coords")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [Vector2i(0, 0), Vector2i(1, 6)]
 }
 
 [sub_resource type="Animation" id="Animation_5fyko"]
@@ -97,6 +173,11 @@ tracks/0/keys = {
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_80d3x"]
 _data = {
 &"RESET": SubResource("Animation_3fqbo"),
+&"defeat": SubResource("Animation_h1r3i"),
+&"punchLeft": SubResource("Animation_f5ot1"),
+&"punchRight": SubResource("Animation_6v3vn"),
+&"special": SubResource("Animation_wnbve"),
+&"victory": SubResource("Animation_wi85q"),
 &"walkDown": SubResource("Animation_5fyko"),
 &"walkLeft": SubResource("Animation_fw77w"),
 &"walkRight": SubResource("Animation_eiiim"),
@@ -104,20 +185,13 @@ _data = {
 }
 
 [node name="Unit" type="CharacterBody2D" unique_id=324963147 groups=["dropable"]]
+z_index = 9
 texture_filter = 1
 collision_layer = 2
 collision_mask = 2
 input_pickable = true
 motion_mode = 1
 script = ExtResource("1_w87tj")
-
-[node name="DraggbleArea2D" type="Area2D" parent="." unique_id=1504426914]
-unique_name_in_owner = true
-collision_layer = 128
-collision_mask = 0
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="DraggbleArea2D" unique_id=1090714955]
-shape = SubResource("RectangleShape2D_h1r3i")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=111906626]
 shape = SubResource("CircleShape2D_p0kfm")
@@ -151,18 +225,6 @@ avoidance_enabled = true
 avoidance_mask = 3
 debug_path_custom_color = Color(1, 0.04000002, 0.04000002, 1)
 
-[node name="UnitUI" parent="." unique_id=157505972 node_paths=PackedStringArray("unit") instance=ExtResource("4_h1r3i")]
-unique_name_in_owner = true
-offset_left = -32.0
-offset_top = -32.0
-offset_right = 32.0
-offset_bottom = 32.0
-unit = NodePath("..")
-
-[connection signal="body_entered" from="DraggbleArea2D" to="." method="_on_area_2d_body_entered"]
-[connection signal="body_exited" from="DraggbleArea2D" to="." method="_on_area_2d_body_exited"]
-[connection signal="input_event" from="DraggbleArea2D" to="." method="_on_draggble_area_2d_input_event"]
-[connection signal="mouse_entered" from="DraggbleArea2D" to="." method="_on_area_2d_mouse_entered"]
-[connection signal="mouse_exited" from="DraggbleArea2D" to="." method="_on_area_2d_mouse_exited"]
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
 [connection signal="timeout" from="IdleTimer" to="." method="_on_idle_timer_timeout"]
 [connection signal="velocity_computed" from="NavigationAgent2D" to="." method="_on_navigation_agent_2d_velocity_computed"]

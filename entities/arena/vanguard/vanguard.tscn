@@ -1,6 +1,44 @@
 [gd_scene format=3 uid="uid://dl77yvk8j2bcl"]
 
 [ext_resource type="Script" uid="uid://d0uhclr75kfxu" path="res://entities/arena/vanguard/vanguard.gd" id="1_odtu7"]
+[ext_resource type="PackedScene" uid="uid://dn4uir7xq7adp" path="res://entities/arena/vanguard/duel/duel.tscn" id="2_3gqbu"]
 
-[node name="Vanguard" type="Node2D" unique_id=1591894832]
+[node name="Vanguard" type="Node2D" unique_id=1591894832 node_paths=PackedStringArray("duels")]
+scale = Vector2(0.6, 0.6)
 script = ExtResource("1_odtu7")
+offset = 240
+duels = [NodePath("Duels/Duel1"), NodePath("Duels/Duel2"), NodePath("Duels/Duel3"), NodePath("Duels/Duel4"), NodePath("Duels/Duel5")]
+
+[node name="Duels" type="Node2D" parent="." unique_id=1693548376]
+unique_name_in_owner = true
+
+[node name="Duel1" parent="Duels" unique_id=155574144 node_paths=PackedStringArray("vanguard") instance=ExtResource("2_3gqbu")]
+unique_name_in_owner = true
+position = Vector2(0, -480)
+vanguard = NodePath("../..")
+index = 1
+
+[node name="Duel2" parent="Duels" unique_id=1547586960 node_paths=PackedStringArray("vanguard") instance=ExtResource("2_3gqbu")]
+unique_name_in_owner = true
+position = Vector2(0, -240)
+vanguard = NodePath("../..")
+index = 2
+
+[node name="Duel3" parent="Duels" unique_id=1859689015 node_paths=PackedStringArray("vanguard") instance=ExtResource("2_3gqbu")]
+unique_name_in_owner = true
+vanguard = NodePath("../..")
+index = 3
+
+[node name="Duel4" parent="Duels" unique_id=1302828931 node_paths=PackedStringArray("vanguard") instance=ExtResource("2_3gqbu")]
+unique_name_in_owner = true
+position = Vector2(0, 240)
+vanguard = NodePath("../..")
+index = 4
+
+[node name="Duel5" parent="Duels" unique_id=559267411 node_paths=PackedStringArray("vanguard") instance=ExtResource("2_3gqbu")]
+unique_name_in_owner = true
+position = Vector2(0, 480)
+vanguard = NodePath("../..")
+index = 5
+
+[connection signal="duel_finished" from="." to="." method="_on_duel_finished"]

@@ -1,0 +1,32 @@
+[gd_scene format=3 uid="uid://c23065cnxja0g"]
+
+[ext_resource type="PackedScene" uid="uid://b3lborblpvleg" path="res://entities/unit/unit.tscn" id="1_eifwn"]
+[ext_resource type="PackedScene" uid="uid://cfygdmge5xs41" path="res://entities/unit/soldier/ui/unit_ui.tscn" id="2_cl4jn"]
+[ext_resource type="Script" uid="uid://dfk8owchksvux" path="res://entities/unit/soldier/soldier.gd" id="2_eg5ur"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_h1r3i"]
+size = Vector2(64, 64)
+
+[node name="Soldier" unique_id=324963147 instance=ExtResource("1_eifwn")]
+script = ExtResource("2_eg5ur")
+
+[node name="DraggbleArea2D" type="Area2D" parent="." index="1" unique_id=1903108548]
+unique_name_in_owner = true
+collision_layer = 128
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DraggbleArea2D" index="0" unique_id=1162678770]
+shape = SubResource("RectangleShape2D_h1r3i")
+
+[node name="UnitUI" parent="." index="7" unique_id=157505972 instance=ExtResource("2_cl4jn")]
+unique_name_in_owner = true
+offset_left = -32.0
+offset_top = -32.0
+offset_right = 32.0
+offset_bottom = 32.0
+
+[connection signal="body_entered" from="DraggbleArea2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="DraggbleArea2D" to="." method="_on_area_2d_body_exited"]
+[connection signal="input_event" from="DraggbleArea2D" to="." method="_on_draggble_area_2d_input_event"]
+[connection signal="mouse_entered" from="DraggbleArea2D" to="." method="_on_area_2d_mouse_entered"]
+[connection signal="mouse_exited" from="DraggbleArea2D" to="." method="_on_area_2d_mouse_exited"]

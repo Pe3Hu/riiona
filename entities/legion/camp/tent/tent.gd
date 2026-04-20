@@ -3,11 +3,11 @@ class_name Tent
 extends Node2D
 
 
-
-@export var unit_scene: PackedScene
+@export var soldier_scene: PackedScene
 @export var camp: Camp
+@export var fallback: Fallback
 
-@export var type: State.Unit:
+@export var type: State.Soldier:
 	set(value_):
 		type = value_
 		update_texture()
@@ -17,23 +17,27 @@ extends Node2D
 @onready var body_sprite: Sprite2D = %BodySprite  
 
 
-
 func _ready():
 	update_texture()
 
 func update_texture():
 	if !body_sprite: return
-	var type_str = Catalog.unit_to_string[type]
+	var type_str = Catalog.soldier_to_string[type]
 	var path = "res://entities/legion/camp/tent/images/%s_tent.png" % type_str
 	body_sprite.texture = load(path)
 
-func swapn_unit() -> void:
-	var unit = unit_scene.instantiate()
+func swapn_soldier() -> void:
+	var soldier = soldier_scene.instantiate()
 	var phalanx = camp.current_spawn_phalanx
-	var spot = phalanx.spots.get_child(index-1)
-	var initiative = camp.battlefield.units.get_child_count() % 10
-	camp.battlefield.units.add_child(unit)
-	unit.global_position = global_position
-	unit.type = type
-	unit.target_spot = spot
-	unit.ui.update_initiative_label(initiative)
+	var spot = phalanx.spots[index - 1]
+	var initiative = camp.battlefield.soldiers.get_child_count() % 10
+	camp.battlefield.soldiers.add_child(soldier)
+	soldier.global_position = global_position
+	soldier.type = type
+	soldier.target_spot = spot
+	soldier.tent = self
+	soldier.ui.update_initiative_label(initiative)
+	camp.soldiers.append(soldier)
+
+func update_target_spot() -> void:
+	pass

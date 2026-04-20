@@ -14,9 +14,15 @@ enum Bowl {
 	HEALTH
 }
 
-enum Unit{
+enum Soldier{
 	PAWN,
 	ELITE
+}
+
+enum Duel{
+	TIE,
+	VICTORY,
+	DEFEAT,
 }
 
 enum Side{
