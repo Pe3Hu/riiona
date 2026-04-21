@@ -1,0 +1,10 @@
+[gd_resource type="LabelSettings" format=3 uid="uid://t8upjjjulfoa"]
+
+[ext_resource type="FontFile" uid="uid://djaflot4rx25i" path="res://assets/fonts/dpcomic.ttf" id="1_b2t2a"]
+
+[resource]
+font = ExtResource("1_b2t2a")
+font_size = 24
+font_color = Color(1, 0.26, 0.26, 1)
+outline_size = 12
+outline_color = Color(0, 0, 0, 1)

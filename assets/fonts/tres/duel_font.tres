@@ -1,0 +1,9 @@
+[gd_resource type="LabelSettings" format=3 uid="uid://b811c5yyb6dox"]
+
+[ext_resource type="FontFile" uid="uid://djaflot4rx25i" path="res://assets/fonts/dpcomic.ttf" id="1_1iw3c"]
+
+[resource]
+font = ExtResource("1_1iw3c")
+font_size = 400
+outline_size = 120
+outline_color = Color(0, 0, 0, 1)

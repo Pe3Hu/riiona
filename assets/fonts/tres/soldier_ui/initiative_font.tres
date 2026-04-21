@@ -1,0 +1,10 @@
+[gd_resource type="LabelSettings" format=3 uid="uid://c6h3pjlkbtnok"]
+
+[ext_resource type="FontFile" uid="uid://djaflot4rx25i" path="res://assets/fonts/dpcomic.ttf" id="1_txaqe"]
+
+[resource]
+font = ExtResource("1_txaqe")
+font_size = 24
+font_color = Color(0.26, 1, 0.30933326, 1)
+outline_size = 12
+outline_color = Color(0, 0, 0, 1)

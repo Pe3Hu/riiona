@@ -1,3 +1,4 @@
+res://assets/fonts/
 res://entities/unit/janitor/
 res://entities/unit/
 res://entities/unit/soldier/
@@ -7,5 +8,4 @@ res://entities/arena/vanguard/duel/pool/box/
 res://entities/arena/vanguard/duel/pool/
 res://global/
 D:/godot/templates/blank template/assets/fonts/
-res://assets/fonts/
 res://entities/world/

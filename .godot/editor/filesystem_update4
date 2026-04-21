@@ -1,7 +1,0 @@
-res://entities/legion/camp/graveyard/graveyard.tscn
-res://entities/unit/soldier/soldier.tscn
-res://entities/unit/janitor/janitor.tscn
-res://entities/legion/camp/graveyard/graveyard.gd
-res://entities/unit/janitor/janitor.gd
-res://entities/unit/soldier/soldier.gd
-res://entities/unit/unit.tscn

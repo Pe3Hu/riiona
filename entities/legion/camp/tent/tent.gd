@@ -16,6 +16,8 @@ extends Node2D
 
 @onready var body_sprite: Sprite2D = %BodySprite  
 
+var soldiers: Array[Soldier]
+
 
 func _ready():
 	update_texture()
@@ -23,7 +25,8 @@ func _ready():
 func update_texture():
 	if !body_sprite: return
 	var type_str = Catalog.soldier_to_string[type]
-	var path = "res://entities/legion/camp/tent/images/%s_tent.png" % type_str
+	var side_str = Catalog.side_to_string[side]
+	var path = "res://entities/legion/camp/tent/images/%s_tent_%s.png" % [type_str, side_str]
 	body_sprite.texture = load(path)
 
 func swapn_soldier() -> void:
@@ -38,6 +41,7 @@ func swapn_soldier() -> void:
 	soldier.tent = self
 	soldier.ui.update_initiative_label(initiative)
 	camp.soldiers.append(soldier)
+	soldiers.append(soldier)
 
 func update_target_spot() -> void:
 	pass

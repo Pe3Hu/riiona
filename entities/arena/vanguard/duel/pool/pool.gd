@@ -18,6 +18,7 @@ extends SubViewportContainer
 @export var dice: Dice
 
 var soldier: Soldier
+var spot: Spot
 
 
 func update_positions() -> void:
@@ -38,4 +39,5 @@ func update_positions() -> void:
 	camera.position = anchor
 
 func reset() -> void:
+	label.visible = true
 	visible = true

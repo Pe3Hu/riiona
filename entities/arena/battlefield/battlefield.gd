@@ -3,10 +3,12 @@ class_name Battlefield
 extends Node2D
 
 
-signal camp_fallback_finished(camp_: Camp)
+#signal camp_fallback_finished(camp_: Camp)
 signal janitor_finished(janitor_: Janitor)
 
 @onready var soldiers = %Soldiers
+@onready var left_camp = %LeftCamp
+@onready var right_camp = %RihgtCamp
 
 @export var camps: Array[Camp]
 @export var vanguard: Vanguard
@@ -17,12 +19,14 @@ var active_camps: Array[Camp]
 
 
 func _ready() -> void:
+	right_camp.graveyard.update_texture()
 	soldiers_motion_simulation()
-	is_selection_phase = false
 
 func soldiers_motion_simulation() -> void:
 	if is_selection_phase:
-		await get_tree().create_timer(1.5).timeout
+		await get_tree().create_timer(1.8).timeout
+		is_selection_phase = false
+	
 	fill_vanduard()
 	#await get_tree().create_timer(0.9).timeout
 	#roster_shuffle()
@@ -43,3 +47,6 @@ func _on_janitor_finished(janitor_: Janitor) -> void:
 	
 	if active_camps.is_empty():
 		fill_vanduard()
+
+func winner_determination() -> void:
+	%VictoryLabel.visible = true

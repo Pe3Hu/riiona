@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://dbxgt8y1ik182" path="res://entities/arena/vanguard/duel/duel.gd" id="1_8c2d6"]
 [ext_resource type="PackedScene" uid="uid://bi66c6tn3msw" path="res://entities/arena/vanguard/duel/pool/pool.tscn" id="1_l57li"]
+[ext_resource type="LabelSettings" uid="uid://b811c5yyb6dox" path="res://assets/fonts/tres/duel_font.tres" id="2_2awlf"]
 
 [node name="Duel" type="Node2D" unique_id=155574144 node_paths=PackedStringArray("pools")]
 script = ExtResource("1_8c2d6")
@@ -22,14 +23,17 @@ unique_name_in_owner = true
 custom_minimum_size = Vector2(1024, 0)
 layout_mode = 2
 size_flags_horizontal = 4
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 120
 theme_override_font_sizes/font_size = 400
 text = "0"
+label_settings = ExtResource("2_2awlf")
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="LeftPool" parent="HBoxContainer/Left" unique_id=1296281751 node_paths=PackedStringArray("label", "duel") instance=ExtResource("1_l57li")]
 unique_name_in_owner = true
-visible = false
 layout_mode = 2
 side = 1
 label = NodePath("../LeftPoolLabel")
@@ -45,12 +49,12 @@ layout_mode = 2
 size_flags_vertical = 1
 theme_override_font_sizes/font_size = 400
 text = "0"
+label_settings = ExtResource("2_2awlf")
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="RightPool" parent="HBoxContainer/Right" unique_id=534251094 node_paths=PackedStringArray("label", "duel") instance=ExtResource("1_l57li")]
 unique_name_in_owner = true
-visible = false
 layout_mode = 2
 label = NodePath("../RightPoolLabel")
 duel = NodePath("../../..")

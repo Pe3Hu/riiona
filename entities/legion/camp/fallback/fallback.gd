@@ -21,6 +21,9 @@ extends Node2D
 
 
 func activate() -> void:
+	if !tent.camp.is_march:
+		tent.camp.is_march = true
+	
 	soldier = spots.back().soldier
 	
 	if soldier.is_alive:
@@ -44,7 +47,7 @@ func reset_path() -> void:
 	soldier.is_retreating = false
 	soldier.rest_collision()
 	path_follow.progress_ratio = 0
-	#tent.camp.fallback_finished.emit(self)
+	tent.camp.fallback_finished.emit(self)
 
 func switch_side() -> void:
 	var points: Array[Vector2]

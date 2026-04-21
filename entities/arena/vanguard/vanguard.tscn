@@ -41,4 +41,5 @@ position = Vector2(0, 480)
 vanguard = NodePath("../..")
 index = 5
 
+[connection signal="duel_canceled" from="." to="." method="_on_duel_canceled"]
 [connection signal="duel_finished" from="." to="." method="_on_duel_finished"]

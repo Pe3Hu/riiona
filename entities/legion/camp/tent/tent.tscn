@@ -1,7 +1,6 @@
 [gd_scene format=3 uid="uid://cb5prxr0cwbfn"]
 
 [ext_resource type="Script" uid="uid://dbrqwibe82iil" path="res://entities/legion/camp/tent/tent.gd" id="1_h6exp"]
-[ext_resource type="Texture2D" uid="uid://88cthg2tnwvy" path="res://entities/legion/camp/tent/images/pawn_tent.png" id="2_br1ty"]
 [ext_resource type="PackedScene" uid="uid://c23065cnxja0g" path="res://entities/unit/soldier/soldier.tscn" id="2_i5osm"]
 
 [node name="Tent" type="Node2D" unique_id=1526950185]
@@ -10,5 +9,4 @@ soldier_scene = ExtResource("2_i5osm")
 
 [node name="BodySprite" type="Sprite2D" parent="." unique_id=551576610]
 unique_name_in_owner = true
-scale = Vector2(1.5, 1.5)
-texture = ExtResource("2_br1ty")
+scale = Vector2(0.8, 0.8)

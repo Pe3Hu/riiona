@@ -10,6 +10,7 @@ var soldier: Soldier:
 		if soldier:
 			soldier.current_spot = self
 var pool: Pool
+var fallback: Fallback
 
 @export var phalanx: Phalanx
 @export var index: int
@@ -20,9 +21,12 @@ var pool: Pool
 
 
 func _ready() -> void:
+	add_to_group("dropable")
+	reset()
+
+func reset() -> void:
 	collision_layer = 1 << Catalog.DRAG_AND_DROP_LAYER
 	collision_mask = 0
-	add_to_group("dropable")
 	update_visual(normal_color)
 
 #region soldier
@@ -37,6 +41,7 @@ func attach_soldier(new_soldier: Soldier) -> void:
 	if soldier:
 		soldier.current_spot = self
 		soldier.tent = phalanx.camp.tents[index - 1]
+		soldier.tent.soldiers.append(soldier)
 		
 		if pool != null:
 			pool.duel.soldier_joined.emit(soldier)
@@ -47,6 +52,7 @@ func attach_soldier(new_soldier: Soldier) -> void:
 func detach_soldier() -> void:
 	if soldier:
 		#soldier_changed.emit(self, null)
+		fallback.tent.soldiers.erase(soldier)
 		soldier.current_spot = null
 		soldier = null
 		update_visual_by_occupancy()

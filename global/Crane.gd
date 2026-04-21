@@ -45,14 +45,12 @@ func start_drag(unit: Unit, mouse_global_pos_: Vector2) -> void:
 	drag_started.emit(unit)
 
 func end_drag() -> void:
-	if !dragged_unit:
-		return
+	if !dragged_unit: return
 	
 	var drop_spot = current_hovered_spot
 	var prev_spot = previous_spot
 	
 	dragged_unit.end_drag(drop_spot, prev_spot)
-	
 	drag_ended.emit(dragged_unit)
 	
 	dragged_unit = null

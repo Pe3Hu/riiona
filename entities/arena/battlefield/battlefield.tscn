@@ -1,12 +1,13 @@
 [gd_scene format=3 uid="uid://bokpvabrx64nt"]
 
 [ext_resource type="Script" uid="uid://cin2yfu3yqj57" path="res://entities/arena/battlefield/battlefield.gd" id="1_vigat"]
+[ext_resource type="Texture2D" uid="uid://cstkchf4efukh" path="res://entities/arena/battlefield/images/arena.png" id="2_3i2g4"]
 [ext_resource type="PackedScene" uid="uid://drmci0psy2r5" path="res://entities/legion/camp/camp.tscn" id="2_sbs5h"]
 [ext_resource type="PackedScene" uid="uid://dl77yvk8j2bcl" path="res://entities/arena/vanguard/vanguard.tscn" id="3_qr7gu"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_qr7gu"]
-vertices = PackedVector2Array(789.6406, 529.3281, -962.02344, 581.65625, -872.75, -409.14063, 640.3828, -611.75)
-polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
+vertices = PackedVector2Array(892.97656, 606.10156, 822.2969, 632.9375, -963.1797, 582.27344, -985.7969, -585.1406, 890.02344, -612.85156)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3, 4)])
 outlines = Array[PackedVector2Array]([PackedVector2Array(-996, -595, 900, -623, 903, 613, -973, 592)])
 
 [node name="Battlefield" type="Node2D" unique_id=1825559430 node_paths=PackedStringArray("camps", "vanguard")]
@@ -14,7 +15,14 @@ script = ExtResource("1_vigat")
 camps = [NodePath("LeftCamp"), NodePath("RihgtCamp")]
 vanguard = NodePath("Vanguard")
 
+[node name="BackgroundSprite" type="Sprite2D" parent="." unique_id=1026854351]
+z_index = -2
+position = Vector2(0, -64)
+scale = Vector2(2, 2)
+texture = ExtResource("2_3i2g4")
+
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="." unique_id=1810052088]
+position = Vector2(21, -80)
 navigation_polygon = SubResource("NavigationPolygon_qr7gu")
 
 [node name="LeftCamp" parent="." unique_id=881419817 node_paths=PackedStringArray("battlefield") instance=ExtResource("2_sbs5h")]
@@ -42,6 +50,20 @@ offset_top = 352.0
 offset_right = 21.0
 offset_bottom = 376.0
 text = "ready"
+
+[node name="VictoryLabel" type="Label" parent="." unique_id=860523885]
+unique_name_in_owner = true
+visible = false
+z_index = 101
+offset_left = -160.0
+offset_top = -63.0
+offset_right = 151.0
+offset_bottom = 45.0
+theme_override_constants/outline_size = 18
+theme_override_font_sizes/font_size = 80
+text = "VICTORY"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [connection signal="janitor_finished" from="." to="." method="_on_janitor_finished"]
 [connection signal="pressed" from="ReadyButton" to="." method="_on_ready_button_pressed"]

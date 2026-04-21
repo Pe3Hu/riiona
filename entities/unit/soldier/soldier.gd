@@ -19,7 +19,7 @@ var is_dragging: bool = false
 var can_drag: bool = false
 var is_alive: bool = true
 var is_idle: bool = true
-
+var is_dueling: bool = false
 
 var drag_offset: Vector2 = Vector2.ZERO
 var initial_pos: Vector2 = Vector2.ZERO
@@ -71,6 +71,10 @@ func _physics_process(_delta: float) -> void:
 		update_animation()
 		return
 	
+	if is_dueling:
+		update_animation()
+		return
+	
 	if target_spot:
 		var direction = global_position.direction_to(target_spot.global_position)
 		var distance = global_position.distance_to(target_spot.global_position)
@@ -107,8 +111,7 @@ func start_drag(mouse_global_pos_: Vector2) -> void:
 		current_spot = null
 
 func end_drag(drop_spot_: Spot = null, prev_spot_: Spot = null) -> void:
-	if !is_dragging:
-		return
+	if !is_dragging: return
 	
 	is_dragging = false
 	
@@ -118,6 +121,16 @@ func end_drag(drop_spot_: Spot = null, prev_spot_: Spot = null) -> void:
 	rest_collision()
 	
 	if drop_spot_:
+		#cannot be put in the opponent's spot
+		if drop_spot_.phalanx.camp != tent.camp:
+			return_to_previous_spot()
+			return
+		
+		#cannot be put in the duel's spot
+		if drop_spot_.pool != null:
+			return_to_previous_spot()
+			return
+		
 		if drop_spot_.soldier:
 			swap_with(drop_spot_.soldier, prev_spot_)
 		else:
@@ -139,8 +152,7 @@ func update_drag_position(mouse_global_pos_: Vector2) -> void:
 
 #region spot
 func move_to_spot(new_spot_: Spot) -> void:
-	if new_spot_ == current_spot:
-		return
+	if new_spot_ == current_spot: return
 	
 	target_spot = null
 	velocity = Vector2.ZERO
@@ -161,8 +173,7 @@ func move_to_spot(new_spot_: Spot) -> void:
 	attach_to_spot(new_spot_)
 
 func attach_to_spot(spot_: Spot) -> void:
-	if current_spot == spot_:
-		return
+	if current_spot == spot_: return
 	
 	if current_spot:
 		current_spot.detach_soldier()
@@ -174,9 +185,8 @@ func attach_to_spot(spot_: Spot) -> void:
 		global_position = spot_.global_position
 
 func return_to_previous_spot() -> void:
-	var prev_spot_ = Crane.previous_spot
-	if prev_spot_:
-		move_to_spot(prev_spot_)
+	if Crane.previous_spot:
+		move_to_spot(Crane.previous_spot)
 
 func swap_with(other_soldier_: Soldier, original_spot_: Spot = null) -> void:
 	var my_spot = original_spot_ if original_spot_ else current_spot
@@ -212,13 +222,21 @@ func swap_with(other_soldier_: Soldier, original_spot_: Spot = null) -> void:
 	other_soldier_.collision_layer = other_layer
 
 func arrive_at_target() -> void:
-	if !target_spot:
-		return
+	if !target_spot: return
 	
 	global_position = target_spot.global_position
 	var spot_to_attach = target_spot
 	target_spot = null
 	attach_to_spot(spot_to_attach)
+	
+	#if tent.camp.is_march:
+		#if spot_to_attach.pool != null:
+			#tent.camp.is_march = false
+		#else:
+			#update_target_spot()
+	
+	if tent.camp.is_march:
+		update_target_spot()
 
 func detach_from_spot() -> void:
 	current_spot = null
@@ -228,6 +246,13 @@ func update_target_spot() -> void:
 	var spots = tent.fallback.spots
 	var spot_index = (spots.find(current_spot) + 1) % spots.size()
 	target_spot = spots[spot_index]
+	
+	if tent.camp.is_march:
+		if target_spot.pool != null:
+			tent.camp.empty_duels.erase(target_spot.pool.duel)
+		
+		if tent.camp.empty_duels.is_empty():
+			tent.camp.is_march = false
 #endregion
 
 #region visual
@@ -237,14 +262,18 @@ func update_texture() -> void:
 	var path = "res://entities/unit/soldier/images/%s_soldier.png" % type_str
 	body_sprite.texture = load(path)
 
-
-
 func update_animation() -> void:
 	if !is_idle:
 		if duel_status != State.Duel.TIE:
 			var animation_name = Catalog.duel_to_string[duel_status]
 			animations.play(animation_name)
 			return
+	
+	if is_dueling:
+		var side_str = Catalog.side_to_string[tent.camp.side].capitalize()
+		var animation_name = "punch%s" % side_str
+		animations.play(animation_name)
+		return
 	
 	super.update_animation()
 #endregion
@@ -298,6 +327,7 @@ func duel_won() -> void:
 
 func death() -> void:
 	is_alive = false
+	tent.soldiers.erase(self)
 	enable_snake_area()
 	collision_layer |= 1 << Catalog.JANITOR_LAYER
 	collision_mask |= 1 << Catalog.JANITOR_LAYER
@@ -315,12 +345,14 @@ func _on_animation_player_animation_finished(animation_name_: String) -> void:
 			is_idle = true
 		"defeat":
 			is_idle = true
-
+		"punchLeft":
+			is_dueling = false
+		"punchRight":
+			is_dueling = false
 
 func _on_snake_area_body_entered(body_: Node2D) -> void:
 	if body_ as Soldier:
 		tent.camp.graveyard.janitor.collect_soldier(body_)
-
 
 func enable_snake_area() -> void:
 	%SnakeArea.set_deferred("monitoring", false)

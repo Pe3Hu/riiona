@@ -1,6 +1,8 @@
 [gd_scene format=3 uid="uid://cfygdmge5xs41"]
 
 [ext_resource type="Script" uid="uid://dm61gc17nv2tp" path="res://entities/unit/soldier/ui/unit_ui.gd" id="1_il1km"]
+[ext_resource type="LabelSettings" uid="uid://t8upjjjulfoa" path="res://assets/fonts/tres/soldier_ui/health_font.tres" id="2_f6jp0"]
+[ext_resource type="LabelSettings" uid="uid://c6h3pjlkbtnok" path="res://assets/fonts/tres/soldier_ui/initiative_font.tres" id="3_iosn0"]
 
 [node name="UnitUI" type="MarginContainer" unique_id=157505972]
 custom_minimum_size = Vector2(64, 64)
@@ -20,6 +22,7 @@ size_flags_vertical = 8
 theme_override_colors/font_color = Color(0.18, 0.54900026, 1, 1)
 theme_override_font_sizes/font_size = 24
 text = "0"
+label_settings = ExtResource("2_f6jp0")
 vertical_alignment = 2
 
 [node name="HealthLabel" type="Label" parent="." unique_id=1233116342]
@@ -31,6 +34,7 @@ size_flags_vertical = 0
 theme_override_colors/font_color = Color(1, 0.13, 0.13, 1)
 theme_override_font_sizes/font_size = 24
 text = "1"
+label_settings = ExtResource("2_f6jp0")
 horizontal_alignment = 2
 
 [node name="MoralLabel" type="Label" parent="." unique_id=217171510]
@@ -43,6 +47,7 @@ size_flags_vertical = 8
 theme_override_colors/font_color = Color(0.85150003, 1, 0.19, 1)
 theme_override_font_sizes/font_size = 24
 text = "0"
+label_settings = ExtResource("2_f6jp0")
 horizontal_alignment = 2
 vertical_alignment = 2
 
@@ -52,6 +57,7 @@ custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 0
-theme_override_colors/font_color = Color(0.31600004, 1, 0.27999997, 1)
+theme_override_colors/font_color = Color(0.23000002, 1, 0.25566667, 1)
 theme_override_font_sizes/font_size = 24
 text = "0"
+label_settings = ExtResource("3_iosn0")

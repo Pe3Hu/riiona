@@ -47,6 +47,7 @@ var face_rotations: Array[Vector3] = [
 
 var face_values = [1, 2, 3, 4, 5, 6]
 
+
 func _ready() -> void:
 	rng.randomize()
 	init_faces()
@@ -67,6 +68,7 @@ func start_fake_roll() -> void:
 	pool.duel.active_dices.append(self)
 
 func start_roll() -> void:
+	pool.spot.soldier.is_dueling = true
 	visible = true
 	pool.duel.active_dices.append(self)
 	pool.box.reset()
@@ -239,6 +241,9 @@ func dissolve() -> void:
 	pool.box.start_dissolve()
 	await pool.box.dissolve_tween.finished
 	pool.duel.roll_finished.emit(self)
+
+func flip_on_face() -> void:
+	pass
 
 #func _on_tree_entered() -> void:
 	#SignalManager.impulse_dice_rolled.connect(start_roll)

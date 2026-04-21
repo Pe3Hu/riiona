@@ -2,11 +2,11 @@
 
 [ext_resource type="Script" uid="uid://dpbqpc2cuspnt" path="res://entities/legion/camp/graveyard/graveyard.gd" id="1_lu3gn"]
 [ext_resource type="PackedScene" uid="uid://bqdkqw1gsk4at" path="res://entities/unit/janitor/janitor.tscn" id="2_honmk"]
-[ext_resource type="Texture2D" uid="uid://dtbnrqdk305gn" path="res://entities/legion/camp/graveyard/images/graveyard.png" id="2_lu3gn"]
+[ext_resource type="Texture2D" uid="uid://dtbnrqdk305gn" path="res://entities/legion/camp/graveyard/images/graveyard_left.png" id="3_honmk"]
 
 [sub_resource type="Curve2D" id="Curve2D_hjmjx"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, 0, -768, 0, 0, 0, 0, 0, 320)
+"points": PackedVector2Array(0, 0, 0, 0, 0, -768, 0, 0, 0, 0, 0, 328)
 }
 point_count = 2
 
@@ -30,14 +30,16 @@ rotates = false
 
 [node name="Janitor" parent="Path/PathFollow" unique_id=324963147 node_paths=PackedStringArray("graveyard") instance=ExtResource("2_honmk")]
 unique_name_in_owner = true
+visible = false
 collision_mask = 16
 graveyard = NodePath("../../..")
+gap = 64
 
 [node name="BodySprite" type="Sprite2D" parent="." unique_id=551576610]
 unique_name_in_owner = true
 z_index = 11
 scale = Vector2(0.5, 0.5)
-texture = ExtResource("2_lu3gn")
+texture = ExtResource("3_honmk")
 
 [node name="GraveArea" type="Area2D" parent="." unique_id=43413341]
 collision_layer = 32

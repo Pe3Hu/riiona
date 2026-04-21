@@ -3,7 +3,7 @@ class_name Camp
 extends Node2D
 
 
-#signal fallback_finished(fallback_: Fallback)
+signal fallback_finished(fallback_: Fallback)
 
 
 @export var battlefield: Battlefield
@@ -25,6 +25,9 @@ extends Node2D
 
 var soldiers: Array[Soldier]
 var active_fallbacks: Array[Fallback]
+var empty_duels: Array[Duel]
+
+var is_march: bool = false
 
 
 func _ready() -> void:
@@ -47,6 +50,7 @@ func update_spawn_phalanx() -> void:
 		current_spawn_phalanx = null
 		return
 	
+	tent_timer.stop()
 	current_spawn_phalanx = phalanxs[phalanx_index]
 
 func switch_side() -> void:
@@ -68,6 +72,9 @@ func switch_side() -> void:
 	if fallbacks:
 		for fallback in fallbacks:
 			fallback.switch_side()
+	
+	if graveyard:
+		graveyard.update_texture()
 
 func init_fallback_spots() -> void:
 	for _i in fallbacks.size():
@@ -77,10 +84,14 @@ func init_fallback_spots() -> void:
 			var phalanx = phalanxs[_j]
 			var spot = phalanx.spots[_i]
 			fallback.spots.push_front(spot)
+			spot.fallback = fallback
 
 func update_soldier_target_spots() -> void:
-	for soldier in soldiers:
-		soldier.update_target_spot()
+	for tent in tents:
+		if !soldiers.is_empty():
+		
+			for soldier in soldiers:
+				soldier.update_target_spot()
 
 func roster_shuffle() -> void:
 	battlefield.active_camps.append(self)
@@ -89,8 +100,9 @@ func roster_shuffle() -> void:
 	for fallback in fallbacks:
 		fallback.activate()
 
-#func _on_fallback_finished(fallback_: Fallback) -> void:
-	#active_fallbacks.erase(fallback_)
-	#
+func _on_fallback_finished(fallback_: Fallback) -> void:
+	active_fallbacks.erase(fallback_)
 	#if active_fallbacks.is_empty():
 		#pass
+	var duel = fallback_.spots.back().pool.duel
+	empty_duels.append(duel)

@@ -4,12 +4,9 @@ extends Unit
 
 @export var graveyard: Graveyard
 
-var gap: float = 64
+@export var gap: int = 64
 
-#var bool: is_retreating = false
 var soldiers: Array[Soldier]
-
-
 
 
 func _physics_process(delta_: float) -> void:
@@ -24,7 +21,6 @@ func _physics_process(delta_: float) -> void:
 	
 	update_soldiers_positions(delta_)
 	#super._physics_process(delta_)
-	
 
 func update_soldiers_positions(_delta: float):
 	if soldiers.is_empty(): return
@@ -58,7 +54,6 @@ func collect_soldier(soldier_: Soldier) -> void:
 	#soldier_.body_sprite.clip_children = CanvasItem.CLIP_CHILDREN_AND_DRAW
 	#soldier_.shadow_sprite.clip_children = CanvasItem.CLIP_CHILDREN_AND_DRAW
 
-
 func _on_snake_area_body_exited(body_: Node2D) -> void:
 	if body_ as Soldier:
 		pass
@@ -74,3 +69,11 @@ func enable_snake_area() -> void:
 func disable_snake_area() -> void:
 	%SnakeArea.set_deferred("monitoring", true)
 	%SnakeArea.set_deferred("monitorable", true)
+
+func reset() -> void:
+	#visible = true
+	collision_mask = 1 << (Catalog.JANITOR_LAYER + 1)
+	collision_layer = 1 << (Catalog.JANITOR_LAYER + 1)
+	
+	graveyard.soldiers.append_array(soldiers)
+	soldiers.clear()

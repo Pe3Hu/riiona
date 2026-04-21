@@ -51,8 +51,11 @@ func roll_dices() -> void:
 		pool.dice.start_roll()
 
 func start_duel() -> void:
+	#if true: return
+	if soldiers.front().tent.camp.is_march: return
 	soldiers.front().opponent = soldiers.back()
 	soldiers.back().opponent = soldiers.front()
+	
 	
 	vanguard.active_duels.append(self)
 	#Engine.time_scale = 1.0
@@ -63,6 +66,7 @@ func start_duel() -> void:
 func end_duel() -> void:
 	compare_roll_result()
 	vanguard.duel_finished.emit(self)
+	reset()
 
 func compare_roll_result() -> void:
 	test_compare()
@@ -84,9 +88,30 @@ func _on_soldier_joined(soldier_: Soldier) -> void:
 	
 	if soldiers.size() == Catalog.DUEL_UNIT_DEFAULT_COUNT:
 		start_duel()
+	else:
+		check_opponent_tent(soldier_)
 
 func _on_roll_finished(dice_: Dice) -> void:
 	active_dices.erase(dice_)
 	
 	if active_dices.is_empty():
 		end_duel()
+
+func reset() -> void:
+	for pool in pools:
+		pool.label.visible = false
+	
+	soldiers.clear()
+
+func check_opponent_tent(soldier_: Soldier) -> void:
+	var opponent_pool = get_anathor_pool(soldier_.pool)
+	var opponent_tent = opponent_pool.spot.fallback.tent
+	
+	if opponent_tent.soldiers.is_empty():
+		vanguard.duel_canceled.emit(self)
+
+func get_anathor_pool(pool_: Pool) -> Pool:
+	var options: Array[Pool]
+	options.append_array(pools)
+	options.erase(pool_)
+	return options.front()
