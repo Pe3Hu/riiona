@@ -11,6 +11,7 @@ polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3, 4)])
 outlines = Array[PackedVector2Array]([PackedVector2Array(-996, -595, 900, -623, 903, 613, -973, 592)])
 
 [node name="Battlefield" type="Node2D" unique_id=1825559430 node_paths=PackedStringArray("camps", "vanguard")]
+visible = false
 script = ExtResource("1_vigat")
 camps = [NodePath("LeftCamp"), NodePath("RihgtCamp")]
 vanguard = NodePath("Vanguard")
@@ -65,5 +66,6 @@ text = "VICTORY"
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[connection signal="camp_march_finished" from="." to="." method="_on_camp_march_finished"]
 [connection signal="janitor_finished" from="." to="." method="_on_janitor_finished"]
 [connection signal="pressed" from="ReadyButton" to="." method="_on_ready_button_pressed"]

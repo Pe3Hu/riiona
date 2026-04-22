@@ -227,10 +227,11 @@ func update_label() -> void:
 	var old_text = pool.label.text
 	var new_value = int(old_text) + get_top_face_value()
 	
-	if pool.side == State.Side.RIGHT:
-		new_value = 69
-	else:
-		new_value = 99
+	#test
+	#if pool.side == State.Side.RIGHT:
+		#new_value = 69
+	#else:
+		#new_value = 99
 	
 	var stretch_tween = LabelManager.stretch_label(pool.label, str(new_value))
 	await stretch_tween.finished

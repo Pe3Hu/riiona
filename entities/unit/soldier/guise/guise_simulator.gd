@@ -1,14 +1,14 @@
-class_name GuiseResource
+class_name GuiseSimulator
 extends Resource
 
 
-@export var unit: SoldierResource
+@export var unit: SoldierSimulator
 
 @export var hair: State.Hair
 @export var eye: State.Eye
 
 
-func _init(unit_: SoldierResource) -> void:
+func _init(unit_: SoldierSimulator) -> void:
 	unit = unit_
 	
 	roll_hair()

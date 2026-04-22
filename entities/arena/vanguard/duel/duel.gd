@@ -2,8 +2,9 @@
 class_name Duel
 extends Node2D
 
-
+@warning_ignore("unused_signal")
 signal soldier_joined(soldier_: Soldier)
+@warning_ignore("unused_signal")
 signal roll_finished(dice_: Dice)
 
 @export var vanguard: Vanguard
@@ -85,11 +86,15 @@ func test_compare() -> void:
 
 func _on_soldier_joined(soldier_: Soldier) -> void:
 	soldiers.append(soldier_)
+	soldier_.tent.camp.soldier_joined.emit(soldier_)
 	
-	if soldiers.size() == Catalog.DUEL_UNIT_DEFAULT_COUNT:
-		start_duel()
+	if soldier_.tent.camp.last_march_solider == soldier_:
+		vanguard.battlefield.camp_march_finished.emit(soldier_.tent.camp)
 	else:
-		check_opponent_tent(soldier_)
+		if soldiers.size() == Catalog.DUEL_UNIT_DEFAULT_COUNT:
+			start_duel()
+		else:
+			check_opponent_tent(soldier_)
 
 func _on_roll_finished(dice_: Dice) -> void:
 	active_dices.erase(dice_)

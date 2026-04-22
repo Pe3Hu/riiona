@@ -2,8 +2,9 @@
 class_name Vanguard
 extends Node2D
 
-
+@warning_ignore("unused_signal")
 signal duel_finished(duel_: Duel)
+@warning_ignore("unused_signal")
 signal duel_canceled(duel_: Duel)
 
 @export var battlefield: Battlefield

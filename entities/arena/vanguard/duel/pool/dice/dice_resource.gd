@@ -1,4 +1,4 @@
-class_name DiceResource
+class_name DiceSimulator
 extends Resource
 
 

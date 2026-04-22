@@ -8,6 +8,8 @@ extends Unit
 
 var soldiers: Array[Soldier]
 
+var is_active: bool = false
+
 
 func _physics_process(delta_: float) -> void:
 	if !is_retreating: 
@@ -77,3 +79,4 @@ func reset() -> void:
 	
 	graveyard.soldiers.append_array(soldiers)
 	soldiers.clear()
+	is_active = false

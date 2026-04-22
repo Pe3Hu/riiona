@@ -243,15 +243,17 @@ func detach_from_spot() -> void:
 
 func update_target_spot() -> void:
 	if !is_alive: return
-	var spots = tent.fallback.spots
+	var spots = tent.column.spots
 	var spot_index = (spots.find(current_spot) + 1) % spots.size()
 	target_spot = spots[spot_index]
 	
 	if tent.camp.is_march:
 		if target_spot.pool != null:
+			var a = tent.camp.empty_duels
 			tent.camp.empty_duels.erase(target_spot.pool.duel)
 		
 		if tent.camp.empty_duels.is_empty():
+			tent.camp.last_march_solider = self
 			tent.camp.is_march = false
 #endregion
 
@@ -328,6 +330,10 @@ func duel_won() -> void:
 func death() -> void:
 	is_alive = false
 	tent.soldiers.erase(self)
+	
+	if !tent.camp.graveyard.janitor.is_active:
+		tent.camp.graveyard.janitor.is_active = true
+	
 	enable_snake_area()
 	collision_layer |= 1 << Catalog.JANITOR_LAYER
 	collision_mask |= 1 << Catalog.JANITOR_LAYER

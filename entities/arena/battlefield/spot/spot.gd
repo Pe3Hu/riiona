@@ -10,7 +10,7 @@ var soldier: Soldier:
 		if soldier:
 			soldier.current_spot = self
 var pool: Pool
-var fallback: Fallback
+var column: Column
 
 @export var phalanx: Phalanx
 @export var index: int
@@ -52,7 +52,7 @@ func attach_soldier(new_soldier: Soldier) -> void:
 func detach_soldier() -> void:
 	if soldier:
 		#soldier_changed.emit(self, null)
-		fallback.tent.soldiers.erase(soldier)
+		column.tent.soldiers.erase(soldier)
 		soldier.current_spot = null
 		soldier = null
 		update_visual_by_occupancy()

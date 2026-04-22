@@ -3,8 +3,10 @@ class_name Camp
 extends Node2D
 
 
-signal fallback_finished(fallback_: Fallback)
-
+@warning_ignore("unused_signal")
+signal column_finished(column_: Column)
+@warning_ignore("unused_signal")
+signal soldier_joined(soldier_: Soldier)
 
 @export var battlefield: Battlefield
 @export var side: State.Side:
@@ -16,7 +18,7 @@ signal fallback_finished(fallback_: Fallback)
 
 @export var current_spawn_phalanx: Phalanx
 
-@export var fallbacks: Array[Fallback]
+@export var columns: Array[Column]
 @export var phalanxs: Array[Phalanx]
 @export var tents: Array[Tent]
 @export var graveyard: Graveyard
@@ -24,14 +26,17 @@ signal fallback_finished(fallback_: Fallback)
 @onready var tent_timer = %TentTimer
 
 var soldiers: Array[Soldier]
-var active_fallbacks: Array[Fallback]
+var active_columns: Array[Column]
 var empty_duels: Array[Duel]
+var vanguard_soldiers: Array[Soldier]
 
-var is_march: bool = false
+var is_march: bool = true
+var last_march_solider: Soldier = null
 
 
 func _ready() -> void:
-	init_fallback_spots()
+	reset_duels()
+	init_column_spots()
 
 #func get_tent() -> Tent:
 	#var tent = tents.get_child(index_)
@@ -69,22 +74,22 @@ func switch_side() -> void:
 		for tent in %Tents.get_children():
 			tent.side = Catalog.side_to_side[tent.side]
 	
-	if fallbacks:
-		for fallback in fallbacks:
-			fallback.switch_side()
+	if columns:
+		for column in columns:
+			column.switch_side()
 	
 	if graveyard:
 		graveyard.update_texture()
 
-func init_fallback_spots() -> void:
-	for _i in fallbacks.size():
-		var fallback = fallbacks[_i]
+func init_column_spots() -> void:
+	for _i in columns.size():
+		var column = columns[_i]
 		
 		for _j in phalanxs.size():
 			var phalanx = phalanxs[_j]
 			var spot = phalanx.spots[_i]
-			fallback.spots.push_front(spot)
-			spot.fallback = fallback
+			column.spots.push_front(spot)
+			spot.column = column
 
 func update_soldier_target_spots() -> void:
 	for tent in tents:
@@ -96,13 +101,26 @@ func update_soldier_target_spots() -> void:
 func roster_shuffle() -> void:
 	battlefield.active_camps.append(self)
 	graveyard.activate()
+	last_march_solider = null
 	
-	for fallback in fallbacks:
-		fallback.activate()
+	for column in columns:
+		column.activate()
 
-func _on_fallback_finished(fallback_: Fallback) -> void:
-	active_fallbacks.erase(fallback_)
-	#if active_fallbacks.is_empty():
-		#pass
-	var duel = fallback_.spots.back().pool.duel
-	empty_duels.append(duel)
+func _on_column_finished(column_: Column) -> void:
+	#active_columns.erase(column_)
+	##if active_columns.is_empty():
+	#	#pass
+	#var duel = column_.spots.back().pool.duel
+	#empty_duels.append(duel)
+	pass
+
+func _on_soldier_joined(soldier_: Soldier) -> void:
+	vanguard_soldiers.append(soldier_)
+
+func reset_duels() -> void:
+	empty_duels.clear()
+	
+	for tent in tents:
+		if !tent.soldiers.is_empty():
+			var duel = tent.column.spots.back().pool.duel
+			empty_duels.append(duel)

@@ -1,12 +1,12 @@
-class_name SoldierResource
+class_name SoldierSimulator
 extends Resource
 
 
-var health: BowlResource = BowlResource.new(self, State.Bowl.HEALTH)
-var guise: GuiseResource = GuiseResource.new(self)
+var health: BowlSimulator = BowlSimulator.new(self, State.Bowl.HEALTH)
+var guise: GuiseSimulator = GuiseSimulator.new(self)
 
-var stance: StanceDiceResource
-var impulse: ImpulseDiceResource
+var stance: StanceDiceSimulator
+var impulse: ImpulseDiceSimulator
 
 var type: State.Soldier
 var initiative: int
@@ -17,7 +17,7 @@ func _init(type_: State.Soldier, initiative_: int) -> void:
 	type = type_
 	initiative = initiative_
 	
-	stance = StanceDiceResource.new(self)
+	stance = StanceDiceSimulator.new(self)
 
 func take_damage(damage_: int) -> void:
 	health.change_value(-damage_)

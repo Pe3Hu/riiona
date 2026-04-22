@@ -1,11 +1,11 @@
-class_name StanceDiceResource
-extends DiceResource
+class_name StanceDiceSimulator
+extends DiceSimulator
 
 
-var soldier: SoldierResource
+var soldier: SoldierSimulator
 
 
-func _init(soldier_: SoldierResource) -> void:
+func _init(soldier_: SoldierSimulator) -> void:
 	soldier = soldier_
 	super._init()
 	

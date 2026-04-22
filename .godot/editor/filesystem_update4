@@ -1,0 +1,5 @@
+res://entities/world/world.tscn
+res://entities/legion/camp/camp_simulator.gd
+res://entities/legion/camp/graveyard/graveyar_simulator.gd
+res://entities/arena/vanguard/duel/pool/dice/impulse/impulse_dice_resource.gd
+res://entities/unit/janitor/janitor_simulator.gd

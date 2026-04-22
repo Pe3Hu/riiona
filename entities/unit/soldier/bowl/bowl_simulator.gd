@@ -1,8 +1,8 @@
-class_name BowlResource
+class_name BowlSimulator
 extends Resource
 
 
-@export var unit: SoldierResource
+@export var unit: SoldierSimulator
 @export var type: State.Bowl
 
 @export var current_value: int
@@ -10,7 +10,7 @@ extends Resource
 @export var min_value: int = 0
 
 
-func _init(unit_: SoldierResource, type_: State.Bowl) -> void:
+func _init(unit_: SoldierSimulator, type_: State.Bowl) -> void:
 	unit = unit_
 	type = type_
 

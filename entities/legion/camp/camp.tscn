@@ -3,14 +3,13 @@
 [ext_resource type="Script" uid="uid://cpsbdvcp0uiff" path="res://entities/legion/camp/camp.gd" id="1_qwl07"]
 [ext_resource type="PackedScene" uid="uid://cb5prxr0cwbfn" path="res://entities/legion/camp/tent/tent.tscn" id="2_m5rgw"]
 [ext_resource type="PackedScene" uid="uid://03ykgquheo2o" path="res://entities/arena/battlefield/phalanx/phalanx.tscn" id="3_5gt8n"]
-[ext_resource type="Script" uid="uid://dqcwgupr12bjg" path="res://entities/legion/camp/fallback/fallback.gd" id="4_v7wqk"]
-[ext_resource type="PackedScene" uid="uid://bdoqbh3iq6kl7" path="res://entities/legion/camp/fallback/fallback.tscn" id="5_5ui6t"]
+[ext_resource type="Script" uid="uid://dqcwgupr12bjg" path="res://entities/legion/camp/column/column.gd" id="4_v7wqk"]
+[ext_resource type="PackedScene" uid="uid://bdoqbh3iq6kl7" path="res://entities/legion/camp/column/column.tscn" id="5_5ui6t"]
 [ext_resource type="PackedScene" uid="uid://bojypk361wgqg" path="res://entities/legion/camp/graveyard/graveyard.tscn" id="6_5ui6t"]
 
-[node name="Camp" type="Node2D" unique_id=881419817 node_paths=PackedStringArray("current_spawn_phalanx", "fallbacks", "phalanxs", "tents", "graveyard")]
+[node name="Camp" type="Node2D" unique_id=881419817 node_paths=PackedStringArray("current_spawn_phalanx", "phalanxs", "tents", "graveyard")]
 script = ExtResource("1_qwl07")
 current_spawn_phalanx = NodePath("Phalanxs/Phalanx2")
-fallbacks = [NodePath("Fallbacks/Fallback1"), NodePath("Fallbacks/Fallback2"), NodePath("Fallbacks/Fallback3"), NodePath("Fallbacks/Fallback4"), NodePath("Fallbacks/Fallback5")]
 phalanxs = [NodePath("Phalanxs/Phalanx1"), NodePath("Phalanxs/Phalanx2"), NodePath("Phalanxs/Phalanx3")]
 tents = [NodePath("Tents/Tent1"), NodePath("Tents/Tent2"), NodePath("Tents/Tent3"), NodePath("Tents/Tent4"), NodePath("Tents/Tent5")]
 graveyard = NodePath("Graveyard")
@@ -18,7 +17,6 @@ graveyard = NodePath("Graveyard")
 [node name="TentTimer" type="Timer" parent="." unique_id=3711662]
 unique_name_in_owner = true
 wait_time = 0.55
-autostart = true
 
 [node name="Phalanxs" type="Node2D" parent="." unique_id=1063850488]
 unique_name_in_owner = true
@@ -27,87 +25,90 @@ unique_name_in_owner = true
 unique_name_in_owner = true
 camp = NodePath("../..")
 type = 0
+index = 1
 
 [node name="Phalanx2" parent="Phalanxs" unique_id=585097313 node_paths=PackedStringArray("camp") instance=ExtResource("3_5gt8n")]
 unique_name_in_owner = true
 position = Vector2(-96, 0)
 camp = NodePath("../..")
+index = 2
 
 [node name="Phalanx3" parent="Phalanxs" unique_id=1663185727 node_paths=PackedStringArray("camp") instance=ExtResource("3_5gt8n")]
 unique_name_in_owner = true
 position = Vector2(-192, 0)
 camp = NodePath("../..")
+index = 3
 
 [node name="Tents" type="Node2D" parent="." unique_id=1957796851]
 unique_name_in_owner = true
 position = Vector2(-320, 0)
 
-[node name="Tent1" parent="Tents" unique_id=1526950185 node_paths=PackedStringArray("camp", "fallback") instance=ExtResource("2_m5rgw")]
+[node name="Tent1" parent="Tents" unique_id=1526950185 node_paths=PackedStringArray("camp", "column") instance=ExtResource("2_m5rgw")]
 unique_name_in_owner = true
 position = Vector2(0, -288)
 camp = NodePath("../..")
-fallback = NodePath("../../Fallbacks/Fallback1")
+column = NodePath("../../Columns/Column1")
 index = 1
 
-[node name="Tent2" parent="Tents" unique_id=1155726 node_paths=PackedStringArray("camp", "fallback") instance=ExtResource("2_m5rgw")]
+[node name="Tent2" parent="Tents" unique_id=1155726 node_paths=PackedStringArray("camp", "column") instance=ExtResource("2_m5rgw")]
 unique_name_in_owner = true
 position = Vector2(0, -160)
 camp = NodePath("../..")
-fallback = NodePath("../../Fallbacks/Fallback2")
+column = NodePath("../../Columns/Column2")
 type = 1
 index = 2
 
-[node name="Tent3" parent="Tents" unique_id=660678255 node_paths=PackedStringArray("camp", "fallback") instance=ExtResource("2_m5rgw")]
+[node name="Tent3" parent="Tents" unique_id=660678255 node_paths=PackedStringArray("camp", "column") instance=ExtResource("2_m5rgw")]
 unique_name_in_owner = true
 position = Vector2(0, -32)
 camp = NodePath("../..")
-fallback = NodePath("../../Fallbacks/Fallback3")
+column = NodePath("../../Columns/Column3")
 index = 3
 
-[node name="Tent4" parent="Tents" unique_id=806794502 node_paths=PackedStringArray("camp", "fallback") instance=ExtResource("2_m5rgw")]
+[node name="Tent4" parent="Tents" unique_id=806794502 node_paths=PackedStringArray("camp", "column") instance=ExtResource("2_m5rgw")]
 unique_name_in_owner = true
 position = Vector2(0, 96)
 camp = NodePath("../..")
-fallback = NodePath("../../Fallbacks/Fallback4")
+column = NodePath("../../Columns/Column4")
 type = 1
 index = 4
 
-[node name="Tent5" parent="Tents" unique_id=710996401 node_paths=PackedStringArray("camp", "fallback") instance=ExtResource("2_m5rgw")]
+[node name="Tent5" parent="Tents" unique_id=710996401 node_paths=PackedStringArray("camp", "column") instance=ExtResource("2_m5rgw")]
 unique_name_in_owner = true
 position = Vector2(0, 224)
 camp = NodePath("../..")
-fallback = NodePath("../../Fallbacks/Fallback5")
+column = NodePath("../../Columns/Column5")
 index = 5
 
-[node name="Fallbacks" type="Node2D" parent="." unique_id=706563640]
+[node name="Columns" type="Node2D" parent="." unique_id=706563640]
 unique_name_in_owner = true
 position = Vector2(0, 64)
 script = ExtResource("4_v7wqk")
 
-[node name="Fallback1" parent="Fallbacks" unique_id=1012818448 node_paths=PackedStringArray("tent") instance=ExtResource("5_5ui6t")]
+[node name="Column1" parent="Columns" unique_id=1012818448 node_paths=PackedStringArray("tent") instance=ExtResource("5_5ui6t")]
 unique_name_in_owner = true
 index = 1
 tent = NodePath("../../Tents/Tent1")
 
-[node name="Fallback2" parent="Fallbacks" unique_id=1187247934 node_paths=PackedStringArray("tent") instance=ExtResource("5_5ui6t")]
+[node name="Column2" parent="Columns" unique_id=1187247934 node_paths=PackedStringArray("tent") instance=ExtResource("5_5ui6t")]
 unique_name_in_owner = true
 position = Vector2(0, 128)
 index = 2
 tent = NodePath("../../Tents/Tent2")
 
-[node name="Fallback3" parent="Fallbacks" unique_id=1478926491 node_paths=PackedStringArray("tent") instance=ExtResource("5_5ui6t")]
+[node name="Column3" parent="Columns" unique_id=1478926491 node_paths=PackedStringArray("tent") instance=ExtResource("5_5ui6t")]
 unique_name_in_owner = true
 position = Vector2(0, 256)
 index = 3
 tent = NodePath("../../Tents/Tent3")
 
-[node name="Fallback4" parent="Fallbacks" unique_id=482757867 node_paths=PackedStringArray("tent") instance=ExtResource("5_5ui6t")]
+[node name="Column4" parent="Columns" unique_id=482757867 node_paths=PackedStringArray("tent") instance=ExtResource("5_5ui6t")]
 unique_name_in_owner = true
 position = Vector2(0, 384)
 index = 4
 tent = NodePath("../../Tents/Tent4")
 
-[node name="Fallback5" parent="Fallbacks" unique_id=2138513221 node_paths=PackedStringArray("tent") instance=ExtResource("5_5ui6t")]
+[node name="Column5" parent="Columns" unique_id=2138513221 node_paths=PackedStringArray("tent") instance=ExtResource("5_5ui6t")]
 unique_name_in_owner = true
 position = Vector2(0, 512)
 index = 5
@@ -117,5 +118,5 @@ tent = NodePath("../../Tents/Tent5")
 position = Vector2(0, 416)
 camp = NodePath("..")
 
-[connection signal="fallback_finished" from="." to="." method="_on_fallback_finished"]
+[connection signal="soldier_joined" from="." to="." method="_on_soldier_joined"]
 [connection signal="timeout" from="TentTimer" to="." method="_on_tent_timer_timeout"]

@@ -1,2 +1,2 @@
-class_name ImpulseDiceResource
-extends DiceResource
+class_name ImpulseDiceSimulator
+extends DiceSimulator

@@ -19,10 +19,13 @@ var soldiers: Array[Soldier]
 func update_texture():
 	if !body_sprite: return
 	var side_str = Catalog.side_to_string[camp.side]
-	var path = "res://entities/legion/camp/graveyard/images/graveyard_%s.png" % side_str
-	body_sprite.texture = load(path)
+	var _path = "res://entities/legion/camp/graveyard/images/graveyard_%s.png" % side_str
+	body_sprite.texture = load(_path)
 
 func activate() -> void:
+	if !janitor.is_active:
+		camp.battlefield.active_camps.erase(camp)
+		return
 	#Engine.time_scale = 1.0
 	janitor.visible = true
 	janitor.is_retreating = true

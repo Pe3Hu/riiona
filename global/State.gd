@@ -73,3 +73,13 @@ enum Phalanx{
 	TIGHT,
 	GAP
 }
+
+enum Phase {
+	START,
+	SPAWN,
+	SWAP,
+	VANGUARD,
+	DUEL,
+	RETREAT,
+	FINISHED
+}

@@ -1,18 +1,21 @@
 extends Node
 
 
-const D6_SIZE = 6
+const D6_SIZE: int = 6
 
-const DUEL_UNIT_DEFAULT_COUNT = 2
-const VANGUARD_DUEL_DEFAULT_COUNT = 5
+const DUEL_UNIT_DEFAULT_COUNT: int = 2
+const VANGUARD_DUEL_DEFAULT_COUNT: int = 5
 
-const LEGION_PAWN_DEFAULT_COUNT = 18
-const LEGION_ELITE_DEFAULT_COUNT = 12
+const LEGION_PAWN_DEFAULT_COUNT: int = 18
+const LEGION_ELITE_DEFAULT_COUNT: int = 12
 
-const UNIT_LAYER = 1
-const SOLDIER_LAYER = 2
-const DRAG_AND_DROP_LAYER = 3
-const JANITOR_LAYER = 4
+const CAMP_COLUMN_DEFAULT_COUNT = 5
+const CAMP_PHALANX_DEFAULT_COUNT = 3
+
+const UNIT_LAYER: int = 1
+const SOLDIER_LAYER: int = 2
+const DRAG_AND_DROP_LAYER: int = 3
+const JANITOR_LAYER: int = 4
 
 #region guise
 const eye_options = [State.Eye.GREEN, State.Eye.BLUE, State.Eye.BROWN]
@@ -100,3 +103,5 @@ const side_to_side = {
 	State.Side.LEFT: State.Side.RIGHT,
 	State.Side.RIGHT: State.Side.LEFT
 }
+
+const SIDES = [State.Side.LEFT, State.Side.RIGHT]

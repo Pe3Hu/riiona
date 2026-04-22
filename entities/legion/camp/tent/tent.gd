@@ -5,7 +5,7 @@ extends Node2D
 
 @export var soldier_scene: PackedScene
 @export var camp: Camp
-@export var fallback: Fallback
+@export var column: Column
 
 @export var type: State.Soldier:
 	set(value_):
