@@ -104,4 +104,40 @@ const side_to_side = {
 	State.Side.RIGHT: State.Side.LEFT
 }
 
-const SIDES = [State.Side.LEFT, State.Side.RIGHT]
+const sides = [State.Side.LEFT, State.Side.RIGHT]
+
+#region machine
+const battlefield_initial_states = [
+	State.Machine.START,
+	State.Machine.SPAWN,
+	State.Machine.SWAP,
+]
+
+const battlefield_loop_states = [
+	State.Machine.MARCH,
+	State.Machine.VANGUARD,
+	State.Machine.REARGUARD,
+]
+
+const battlefield_states = [
+	State.Machine.START,
+	State.Machine.SPAWN,
+	State.Machine.SWAP,
+	State.Machine.MARCH,
+	State.Machine.VANGUARD,
+	State.Machine.REARGUARD,
+	State.Machine.FINISH,
+]
+
+const soldier_states = [
+	State.Machine.IDLE,
+	State.Machine.MOVEMENT,
+	State.Machine.DUEL,
+	State.Machine.RETREAT,
+]
+
+const janitor_states = [
+	State.Machine.IDLE,
+	State.Machine.MOVEMENT,
+]
+#endregion

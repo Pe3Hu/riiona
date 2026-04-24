@@ -249,7 +249,7 @@ func update_target_spot() -> void:
 	
 	if tent.camp.is_march:
 		if target_spot.pool != null:
-			var a = tent.camp.empty_duels
+			var _a = tent.camp.empty_duels
 			tent.camp.empty_duels.erase(target_spot.pool.duel)
 		
 		if tent.camp.empty_duels.is_empty():

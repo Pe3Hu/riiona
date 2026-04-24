@@ -29,6 +29,10 @@ Crane="*uid://ko6puwratrd4"
 Academy="*uid://bn8j0qrycmbpq"
 LabelManager="*uid://br2d120kpbupb"
 
+[debug]
+
+gdscript/warnings/unused_signal=0
+
 [display]
 
 window/size/viewport_width=1920

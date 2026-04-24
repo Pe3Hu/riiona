@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://cin2yfu3yqj57" path="res://entities/arena/battlefield/battlefield.gd" id="1_vigat"]
 [ext_resource type="Texture2D" uid="uid://cstkchf4efukh" path="res://entities/arena/battlefield/images/arena.png" id="2_3i2g4"]
-[ext_resource type="PackedScene" uid="uid://drmci0psy2r5" path="res://entities/legion/camp/camp.tscn" id="2_sbs5h"]
+[ext_resource type="PackedScene" uid="uid://drmci0psy2r5" path="res://entities/arena/battlefield/camp/camp.tscn" id="2_sbs5h"]
 [ext_resource type="PackedScene" uid="uid://dl77yvk8j2bcl" path="res://entities/arena/vanguard/vanguard.tscn" id="3_qr7gu"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_qr7gu"]

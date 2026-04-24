@@ -2,6 +2,7 @@ class_name World
 extends Node
 
 
+var battlefield = BattlefieldSimulator.new()
 
 func _ready() -> void:
 	Engine.time_scale = 2.5

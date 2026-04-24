@@ -1,0 +1,52 @@
+[gd_scene format=3 uid="uid://bojypk361wgqg"]
+
+[ext_resource type="Script" uid="uid://dpbqpc2cuspnt" path="res://entities/arena/battlefield/camp/graveyard/graveyard.gd" id="1_lu3gn"]
+[ext_resource type="PackedScene" uid="uid://bqdkqw1gsk4at" path="res://entities/unit/janitor/janitor.tscn" id="2_honmk"]
+[ext_resource type="Texture2D" uid="uid://dtbnrqdk305gn" path="res://entities/arena/battlefield/camp/graveyard/images/graveyard_left.png" id="3_honmk"]
+
+[sub_resource type="Curve2D" id="Curve2D_hjmjx"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 0, -768, 0, 0, 0, 0, 0, 328)
+}
+point_count = 2
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_honmk"]
+size = Vector2(64, 32)
+
+[node name="Graveyard" type="Node2D" unique_id=1526950185 node_paths=PackedStringArray("janitor", "path", "path_follow")]
+script = ExtResource("1_lu3gn")
+janitor = NodePath("Path/PathFollow/Janitor")
+path = NodePath("Path")
+path_follow = NodePath("Path/PathFollow")
+
+[node name="Path" type="Path2D" parent="." unique_id=283472447]
+unique_name_in_owner = true
+curve = SubResource("Curve2D_hjmjx")
+
+[node name="PathFollow" type="PathFollow2D" parent="Path" unique_id=941418206]
+unique_name_in_owner = true
+position = Vector2(0, -768)
+rotates = false
+
+[node name="Janitor" parent="Path/PathFollow" unique_id=324963147 node_paths=PackedStringArray("graveyard") instance=ExtResource("2_honmk")]
+unique_name_in_owner = true
+visible = false
+collision_mask = 16
+graveyard = NodePath("../../..")
+gap = 64
+
+[node name="BodySprite" type="Sprite2D" parent="." unique_id=551576610]
+unique_name_in_owner = true
+z_index = 11
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("3_honmk")
+
+[node name="GraveArea" type="Area2D" parent="." unique_id=43413341]
+collision_layer = 32
+collision_mask = 32
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GraveArea" unique_id=735860026]
+position = Vector2(0, 32)
+shape = SubResource("RectangleShape2D_honmk")
+
+[connection signal="body_entered" from="GraveArea" to="." method="_on_grave_area_body_entered"]

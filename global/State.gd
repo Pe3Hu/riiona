@@ -74,12 +74,21 @@ enum Phalanx{
 	GAP
 }
 
-enum Phase {
-	START,
-	SPAWN,
-	SWAP,
-	VANGUARD,
-	DUEL,
-	RETREAT,
-	FINISHED
+
+enum Machine {
+	IDLE = 0,
+	MOVEMENT = 1,
+	DUEL = 2,
+	VICTORY = 3,
+	DEFEAT = 4,
+	TRIUMPH = 5,
+	DEATH = 6,
+	RETREAT = 7,
+	START = 10,
+	SPAWN = 11,
+	SWAP = 12,
+	MARCH = 13,
+	VANGUARD = 14,
+	REARGUARD = 15,
+	FINISH = 16
 }
